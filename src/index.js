@@ -15,19 +15,8 @@ import {App} from "./App";
 import {Login} from "./components/Login";
 import {Fragment} from "react";
 
-const ApplicationCompteur = () => {
-  const [compteur, setCompteur] = React.useState(1);
-
-  return (<Fragment>
-    <h1>{compteur}</h1>
-    <button
-        onClick={() => {setCompteur(cpt=> cpt+1)}}>incrementer</button>
-  </Fragment>);
-};
-
 ReactDOM.render(
-    <ApplicationCompteur/>
-  /*<React.StrictMode>
+  <React.StrictMode>
     <Router>
       <Switch>
         <Route exact={true} path={"/login"}>
@@ -39,7 +28,7 @@ ReactDOM.render(
       </Switch>     
     </Router>
     
-  </React.StrictMode>*/
+  </React.StrictMode>
     ,
   document.getElementById('root')
 );
