@@ -30,9 +30,7 @@ export const BarreDeNavigation = (props) => {
     return (
       <aside className="menu-sidebar d-none d-lg-block">
         <div className="logo">
-            <a href="#">
-                <img src="logo.png" alt="My Meds" />
-            </a>
+            <img src="logo.png" alt="My Meds" />
         </div>
         <div className="menu-sidebar__content js-scrollbar1">
             <nav className="navbar-sidebar">
