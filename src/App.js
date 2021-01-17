@@ -51,7 +51,7 @@ export const App = () => {
                                                     </div>
                                                 </div>
                                                 <div className="notifi__footer">
-                                                    <a href="#">All notifications</a>
+                                                    <span>All notifications</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -62,39 +62,37 @@ export const App = () => {
                                                 <img src="images/icon/avatar-01.jpg" alt="John Doe" />
                                             </div>
                                             <div className="content">
-                                                <a className="js-acc-btn" href="#">Aline Dubois</a>
+                                                <span className="js-acc-btn">Aline Dubois</span>
                                             </div>
                                             <div className="account-dropdown js-dropdown">
                                                 <div className="info clearfix">
                                                     <div className="image">
-                                                        <a href="#">
-                                                            <img src="images/icon/avatar-01.jpg" alt="John Doe" />
-                                                        </a>
+                                                        <img src="images/icon/avatar-01.jpg" alt="John Doe" />
                                                     </div>
                                                     <div className="content">
                                                         <h5 className="name">
-                                                            <a href="#">Aline Dubois</a>
+                                                            <span>Aline Dubois</span>
                                                         </h5>
                                                         <span className="email">juillet.aline@gmail.com</span>
                                                     </div>
                                                 </div>
                                                 <div className="account-dropdown__body">
                                                     <div className="account-dropdown__item">
-                                                        <a href="#">
-                                                            <i className="zmdi zmdi-account"></i>Account</a>
+                                                        <span>
+                                                            <i className="zmdi zmdi-account"></i>Account</span>
                                                     </div>
                                                     <div className="account-dropdown__item">
-                                                        <a href="#">
-                                                            <i className="zmdi zmdi-settings"></i>Setting</a>
+                                                        <span>
+                                                            <i className="zmdi zmdi-settings"></i>Setting</span>
                                                     </div>
                                                     <div className="account-dropdown__item">
-                                                        <a href="#">
-                                                            <i className="zmdi zmdi-money-box"></i>Billing</a>
+                                                        <span>
+                                                            <i className="zmdi zmdi-money-box"></i>Billing</span>
                                                     </div>
                                                 </div>
                                                 <div className="account-dropdown__footer">
-                                                    <a href="#">
-                                                        <i className="zmdi zmdi-power"></i>Logout</a>
+                                                    <span>
+                                                        <i className="zmdi zmdi-power"></i>Logout</span>
                                                 </div>
                                             </div>
                                         </div>
