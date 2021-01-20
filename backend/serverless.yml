@@ -1,0 +1,72 @@
+service: my-meds-backend
+
+frameworkVersion: '2'
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  lambdaHashingVersion: 20201221
+  stage: dev
+  region: eu-west-3
+  timeout: 10
+  tracing:
+    apiGateway: true
+    lambda: true
+  environment:
+    TAGS_TABLE: my-meds-${opt:stage, self:provider.stage}-tags
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:CreateTable
+        - dynamodb:DescribeTable
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+        - dynamodb:BatchWriteItem
+      Resource:
+        - Fn::Join:
+            - ""
+            - - "arn:aws:dynamodb:"
+              - Ref: AWS::Region
+              - ":"
+              - Ref: AWS::AccountId
+              - ":table/${self:provider.environment.TAGS_TABLE}"
+    - Effect: Allow
+      Action:
+        - dynamodb:ListTables
+      Resource:
+        - Fn::Join:
+            - ""
+            - - "arn:aws:dynamodb:"
+              - Ref: AWS::Region
+              - ":"
+              - Ref: AWS::AccountId
+              - ":table/*"
+    - Effect: "Allow"
+      Action:
+        - xray:PutTraceSegments
+        - xray:PutTelemetryRecords
+      Resource: "*"
+#plugins:
+#  - serverless-plugin-thundra
+
+package:
+  exclude:
+    - "node_modules/aws-sdk/**"
+
+functions:
+  list-tags:
+    handler: src/tags/functions.list
+    events:
+      - httpApi:
+          path: /tags
+          method: get
+  get-tag:
+    handler: src/tags/functions.get
+    events:
+      - httpApi:
+          path: /tags/{id}
+          method: get

@@ -1,9 +1,46 @@
 language: node_js
 node_js:
 - '12'
-before-script: cd frontend
-script:
-- npm i
-- npm run build
-after_success:
-- surge build/ mymeds.surge.sh
+
+deploy_job: &DEPLOY_JOB
+  cache:
+    directories:
+      - ${SERVICE_PATH}/node_modules
+
+  install:
+    - npm install -g serverless surge
+    - cd ${SERVICE_PATH}
+    - travis_retry npm install
+    - cd -
+
+  script:
+    - cd ${SERVICE_PATH}
+    - npm run deploy-${STAGE_NAME}
+
+jobs:
+  include:
+    - <<: *DEPLOY_JOB
+      name: "Deploy backend on DEV"
+      if: NOT branch = master
+      env:
+        - SERVICE_PATH="backend"
+        - STAGE_NAME=dev
+    - <<: *DEPLOY_JOB
+      name: "Deploy frontend on DEV"
+      if: NOT branch = master
+      env:
+        - SERVICE_PATH="frontend"
+        - STAGE_NAME=dev
+    - <<: *DEPLOY_JOB
+      name: "Deploy backend on PROD"
+      if: branch = master
+      env:
+        - SERVICE_PATH="backend"
+        - STAGE_NAME=prod
+    - <<: *DEPLOY_JOB
+      name: "Deploy frontend on PROD"
+      if: branch = master
+      env:
+        - SERVICE_PATH="frontend"
+        - STAGE_NAME=dev
+

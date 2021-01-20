@@ -17,7 +17,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy-dev": "npm run build && surge build/ mymeds-dev.surge.sh",
+    "deploy-prod": "npm run build && surge build/ mymeds.surge.sh"
   },
   "eslintConfig": {
     "extends": "react-app"
