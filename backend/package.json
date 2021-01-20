@@ -1,0 +1,19 @@
+{
+  "name": "my-meds-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\"",
+    "deploy-dev": "serverless deploy --stage=dev",
+    "deploy-prod": "serverless deploy --stage=prod"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk-fluent-builder": "0.1.3",
+    "aws-lambda-utils": "0.0.2"
+  },
+  "devDependencies": {
+  }
+}
