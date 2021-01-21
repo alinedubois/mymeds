@@ -57,7 +57,7 @@ plugins:
 
 custom:
   umzug:
-    tablename: my-meds-${opt:stage, self:provider.stage}-migrations
+    tablename: my-meds-${env:STAGE, opt:stage, self:provider.stage}-migrations
 
 package:
   exclude:
