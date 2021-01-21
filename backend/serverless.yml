@@ -33,7 +33,7 @@ provider:
               - Ref: AWS::Region
               - ":"
               - Ref: AWS::AccountId
-              - ":table/${self:provider.environment.TAGS_TABLE}"
+              - ":table/my-meds*"
     - Effect: Allow
       Action:
         - dynamodb:ListTables
@@ -50,12 +50,23 @@ provider:
         - xray:PutTraceSegments
         - xray:PutTelemetryRecords
       Resource: "*"
-#plugins:
+
+plugins:
+  - serverless-plugin-umzug
 #  - serverless-plugin-thundra
+
+custom:
+  umzug:
+    tablename: my-meds-${opt:stage, self:provider.stage}-migrations
 
 package:
   exclude:
     - "node_modules/aws-sdk/**"
+    - "node_modules/aws-sdk-fluent-builder/node_modules/**"
+    - "node_modules/umzug/**"
+    - "node_modules/umzug-cli/**"
+    - "node_modules/umzug-dynamodb-storage/**"
+    - "node_modules/serverless-plugin-umzug/**"
 
 functions:
   list-tags:
