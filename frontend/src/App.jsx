@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Divider from '@material-ui/core/Divider';
@@ -14,11 +14,12 @@ import MailIcon from '@material-ui/icons/Mail';
 import MenuIcon from '@material-ui/icons/Menu';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import {AccountCircle} from "@material-ui/icons";
+import {makeStyles, useTheme} from '@material-ui/core/styles';
 import Menu from "@material-ui/core/Menu/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import './App.css';
+import {useAuth0} from "@auth0/auth0-react";
+import {Avatar, CircularProgress, Tooltip} from "@material-ui/core";
 
 const drawerWidth = 240;
 
@@ -56,6 +57,14 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export const App = (props) => {
+    const { user, isAuthenticated, isLoading, loginWithRedirect, logout } = useAuth0();
+
+    useEffect(() => {
+        if (!isAuthenticated && !isLoading) {
+            loginWithRedirect();
+        }
+    });
+
     const { window } = props;
     const classes = useStyles();
     const theme = useTheme();
@@ -120,7 +129,10 @@ export const App = (props) => {
                         <Typography variant="h6" noWrap className="AppTitre">
                             My Meds
                         </Typography>
-                        {auth && (
+                        {isLoading && (
+                            <CircularProgress />
+                        )}
+                        {isAuthenticated && (
                             <div className="AppBarIcones">
                                 <IconButton
                                     aria-label="account of current user"
@@ -129,7 +141,11 @@ export const App = (props) => {
                                     onClick={handleMenu}
                                     color="inherit"
                                 >
-                                    <AccountCircle />
+                                    <Tooltip title={user.name}>
+                                        <Avatar
+                                            alt={user.name}
+                                            src={user.picture} />
+                                    </Tooltip>
                                 </IconButton>
                                 <Menu
                                     id="menu-appbar"
@@ -147,7 +163,7 @@ export const App = (props) => {
                                     onClose={handleClose}
                                 >
                                     <MenuItem onClick={()=>{}}>Profile</MenuItem>
-                                    <MenuItem onClick={()=>{}}>My account</MenuItem>
+                                    <MenuItem onClick={() => logout()}>Déconnexion</MenuItem>
                                 </Menu>
                             </div>
                         )}
@@ -155,7 +171,6 @@ export const App = (props) => {
                 </Toolbar>
             </AppBar>
             <nav className={classes.drawer} aria-label="mailbox folders">
-                {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
                 <Hidden smUp implementation="css">
                     <Drawer
                         container={container}
@@ -167,7 +182,7 @@ export const App = (props) => {
                             paper: classes.drawerPaper,
                         }}
                         ModalProps={{
-                            keepMounted: true, // Better open performance on mobile.
+                            keepMounted: true,
                         }}
                     >
                         {drawer}
