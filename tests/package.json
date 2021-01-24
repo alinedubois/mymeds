@@ -1,0 +1,17 @@
+{
+  "name": "mymeds-tests",
+  "version": "1.0.0",
+  "description": "Tests de bout en bout de l'application MyMeds",
+  "main": "index.js",
+  "scripts": {
+    "test": "cucumber-js --require steps_definitions/"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@cucumber/cucumber": "7.0.0",
+    "puppeteer": "5.5.0",
+    "auth0": "2.32.0",
+    "axios": "0.21.1"
+  }
+}
