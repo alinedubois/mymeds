@@ -1,5 +1,5 @@
 import React from 'react';
-import {Menu} from "./Menu";
+import {AppMenu} from "./AppMenu";
 
 export const BarreDeNavigation = (props) => {
   if (props.mode === 'mobile') {
@@ -21,7 +21,7 @@ export const BarreDeNavigation = (props) => {
           </div>
           <nav className="navbar-mobile">
               <div className="container-fluid">
-                  <Menu mode="mobile"/>
+                  <AppMenu mode="mobile"/>
               </div>
           </nav>
         </header>
@@ -34,7 +34,7 @@ export const BarreDeNavigation = (props) => {
         </div>
         <div className="menu-sidebar__content js-scrollbar1">
             <nav className="navbar-sidebar">
-                <Menu/>
+                <AppMenu/>
             </nav>
         </div>
       </aside>

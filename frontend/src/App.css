@@ -57,3 +57,7 @@
   width: 33%;
   padding-top: 16px;
 }
+
+.MuiIcon-root {
+  width: 2em !important;
+}
