@@ -205,14 +205,14 @@ sax@>=0.6.0:
   resolved "https://registry.yarnpkg.com/sax/-/sax-1.2.4.tgz#2816234e2378bddc4e5354fab5caa895df7100d9"
   integrity sha512-NqVDv9TpANUjFm0N8uM5GxL36UgKi9/atZw+x7YFnQ8ckwFGKrl4xX4yWtrey3UJm5nP1kUbnYgLopqWNSRhWw==
 
-serverless-plugin-umzug@^1.3.0:
+serverless-plugin-umzug@1.3.0:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/serverless-plugin-umzug/-/serverless-plugin-umzug-1.3.0.tgz#b03e3e677f44cb602113a7d86115d852ee14892f"
   integrity sha512-28t5Nm3LAYw/4bJr4EPS8XJi1HEdx4ftTLwT33P6rU1iG2gCiN1EM7AHpJgcQEBady6VlfYKg6QzJw+f2OXwQg==
   dependencies:
     aws-sdk "^2.468.0"
     umzug-cli "^2.0.0"
-    umzug-dynamodb-storage "git://github.com/christophgysin/node-umzug-dynamodb-storage/#tablename-case-sensitive"
+    umzug-dynamodb-storage "git://github.com/christophgysin/node-umzug-dynamodb-storage.git#tablename-case-sensitive"
 
 topo@2.x.x:
   version "2.0.2"
