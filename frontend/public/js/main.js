@@ -186,7 +186,7 @@
   
   
     try {
-      // Hamburger Menu
+      // Hamburger AppMenu
       $('.hamburger').on('click', function () {
         $(this).toggleClass('is-active');
         $('.navbar-mobile').slideToggle('500');

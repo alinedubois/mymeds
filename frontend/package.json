@@ -3,12 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@auth0/auth0-react": "1.2.0",
+    "@material-ui/core": "4.11.2",
+    "@material-ui/icons": "^4.11.2",
     "@testing-library/jest-dom": "5.11.9",
     "@testing-library/react": "11.2.3",
     "@testing-library/user-event": "12.6.2",
-    "bootstrap": "4.5.3",
     "react": "17.0.1",
-    "react-bootstrap": "1.4.0",
     "react-dom": "17.0.1",
     "react-router-dom": "5.2.0",
     "react-scripts": "4.0.1"
@@ -18,8 +19,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy-dev": "npm run build && surge build/ mymeds-dev.surge.sh",
-    "deploy-prod": "npm run build && surge build/ mymeds.surge.sh"
+    "deploy-dev": "sed -i 's/CudqgI5NIfKsEo7fEersJiDBF85FInOp/'\"$OAUTH0_DEV_CLIENT_ID\"'/g' src/index.jsx && sed -i 's/http:\\/\\/localhost:3000/https:\\/\\/mymeds-dev\\.surge\\.sh/g' src/index.jsx && npm run build && surge build/ mymeds-dev.surge.sh",
+    "deploy-prod": "sed -i s/CudqgI5NIfKsEo7fEersJiDBF85FInOp/'\"$OAUTH0_PROD_CLIENT_ID\"'/g src/index.jsx && sed -i 's/http:\\/\\/localhost:3000/https:\\/\\/mymeds\\.surge\\.sh/g' src/index.jsx && npm run build && surge build/ mymeds.surge.sh"
   },
   "eslintConfig": {
     "extends": "react-app"
