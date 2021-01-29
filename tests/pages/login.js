@@ -4,12 +4,12 @@ module.exports = {
     adresse: '/',
     seConnecter: async (login, motDePasse) => {
         const page = scope.context.currentPage;
-        await page.waitForSelector('[name=email]', {
+        await page.waitForSelector('[name=username]', {
             visible: true
         });
-        await page.type('[name=email]', login);
+        await page.type('[name=username]', login);
         await page.type('[name=password]', motDePasse);
-        await page.click('[name=submit]');
+        await page.click('[name=action]');
         await page.waitForNavigation();
     }
 }
