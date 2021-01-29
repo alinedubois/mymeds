@@ -1,14 +1,11 @@
 # language: fr
-Fonctionnalité: Connexion à l'application
-  Dans le but d'accéder à l'application
-  En tant qu'utilisateur
-  Je veux pouvoir me connecter
+Fonctionnalité: Connexion/Déconnexion à l'application
 
   Scénario: Connexion à l'application
     Etant donné que je me suis enregistré en tant que
       | nom                | email            | motDePasse |
-      | Jose Garcia Moreno | test@yopmail.com | test       |
+      | Jose Garcia Moreno | test@yopmail.com | Test123456 |
     Quand je me connecte à l'application avec
       | login            | motDePasse |
-      | test@yopmail.com | test       |
-    Alors je vois "Jose Garcia Moreno" affiché dans le bandeau de l'application
+      | test@yopmail.com | Test123456 |
+    Alors je vois l'avatar de "Jose Garcia Moreno" affiché dans le bandeau de l'application

@@ -1,40 +1,32 @@
+const creerUtilisateur = require("../utilisateurs/creerUtilisateur");
+const tableauGherkinAvecEnteteVersTableauDObjets = require("../steps/tableauGherkinAvecEnteteVersTableauDObjets");
 const {Given, Then, When} = require("@cucumber/cucumber");
-const ManagementClient = require('auth0').ManagementClient;
-const axios = require("axios").default;
+const {setDefaultTimeout} = require('@cucumber/cucumber');
+const pageDeLogin = require('../../pages/login');
+const pageDAccueil = require('../../pages/accueil');
+const ouvrir = require('../../pages/ouvrir');
 
-Given('je me suis enregistré en tant que', async (table) => {
+setDefaultTimeout(60 * 1000);
 
-    /*try {
-        const options = {
-            method: 'POST',
-            url: 'https://dev-mymeds.eu.auth0.com/oauth/token',
-            headers: {'content-type': 'application/json'},
-            data: {
-                grant_type: 'client_credentials',
-                client_id: process.env.OAUTH_CLIENT_ID,
-                client_secret: process.env.OAUTH_CLIENT_SECRET,
-                audience: 'https://dev-mymeds.eu.auth0.com/api/v2/'
-            }
-        };
-        const response = await axios.request(options);
-        const management = new ManagementClient({
-            token: response.data.access_token,
-            domain: 'dev-mymeds.eu.auth0.com'
-        });
-        const users = await management.getUsers();
-        const userId = users[0].user_id;
-        const userPermissions = await management.getUserLogs({
-            id: userId
-        });
-        console.log(userPermissions);
-    } catch (err) {
-        // Handle error.
-        console.error(err.message);
-    }*/
-})
+Given('je me suis enregistré en tant que', async (tableauGherkin) => {
+    const utilisateur = tableauGherkinAvecEnteteVersTableauDObjets(tableauGherkin)[0];
+    try {
+        await creerUtilisateur(utilisateur.nom, utilisateur.email, utilisateur.motDePasse);
+    } catch (error) {
+        if (error.message.includes('The user already exists')) {
+            console.log(`${utilisateur.email} : ${error.message}`);
+        } else {
+            throw error;
+        }
+    }
+});
 
-When(`je me connecte à l'application avec`, (table) => {
-})
+When(`je me connecte à l'application avec`, async (tableauGherkin) => {
+    const utilisateur = tableauGherkinAvecEnteteVersTableauDObjets(tableauGherkin)[0];
+    await ouvrir(pageDeLogin);
+    await pageDeLogin.seConnecter(utilisateur.login, utilisateur.motDePasse);
+});
 
-Then(`je vois {string} affiché dans le bandeau de l'application`, (nom) => {
-})
+Then(`je vois l'avatar de {string} affiché dans le bandeau de l'application`, async nom => {
+    await pageDAccueil.doitContenirLAvatar(nom);
+});
