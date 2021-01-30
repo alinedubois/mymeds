@@ -19,12 +19,12 @@ After(async () => {
 });
 
 AfterAll(async () => {
-    if (scope.browser) {
-        await scope.browser.close();
-    }
     const utilisateursDeTest = (await recupererUtilisateurs())
-        .filter(utilisateur => utilisateur.name === 'Jose Garcia Moreno');
+        .filter(utilisateur => utilisateur.email === 'test@yopmail.com');
     for (const utilisateur of utilisateursDeTest) {
         await supprimerUtilisateur(utilisateur.user_id);
+    }
+    if (scope.browser) {
+        await scope.browser.close();
     }
 });
