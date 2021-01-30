@@ -1,14 +1,15 @@
 language: node_js
 node_js:
 - '12'
-
+addons:
+  chrome: stable
 deploy_job: &DEPLOY_JOB
   cache:
     directories:
       - ${SERVICE_PATH}/node_modules
 
   install:
-    - npm install -g serverless surge
+    - npm install -g serverless surge @cucumber/cucumber
     - cd ${SERVICE_PATH}
     - travis_retry npm install
     - cd -
@@ -20,39 +21,51 @@ deploy_job: &DEPLOY_JOB
 jobs:
   include:
     - <<: *DEPLOY_JOB
+      stage: deploy
       name: "Deploy backend on DEV"
       if: type = push AND NOT branch = master
       env:
         - SERVICE_PATH="backend"
         - STAGE_NAME=dev
     - <<: *DEPLOY_JOB
+      stage: deploy
       name: "Deploy frontend on DEV"
       if: type = push AND NOT branch = master
       env:
         - SERVICE_PATH="frontend"
         - STAGE_NAME=dev
     - <<: *DEPLOY_JOB
+      stage: deploy
       name: "Deploy backend on DEV"
       if: type = pull_request AND NOT branch = master
       env:
         - SERVICE_PATH="backend"
         - STAGE_NAME=dev
     - <<: *DEPLOY_JOB
+      stage: deploy
       name: "Deploy frontend on DEV"
       if: type = pull_request AND NOT branch = master
       env:
         - SERVICE_PATH="frontend"
         - STAGE_NAME=dev
     - <<: *DEPLOY_JOB
+      stage: deploy
       name: "Deploy backend on PROD"
       if: type = push AND branch = master
       env:
         - SERVICE_PATH="backend"
         - STAGE_NAME=prod
     - <<: *DEPLOY_JOB
+      stage: deploy
       name: "Deploy frontend on PROD"
       if: type = push AND branch = master
       env:
         - SERVICE_PATH="frontend"
         - STAGE_NAME=prod
-
+    - <<: *DEPLOY_JOB
+      stage: test
+      name: "Tests on DEV"
+      if: type = push AND NOT branch = master
+      env:
+        - SERVICE_PATH="tests"
+        - STAGE_NAME=dev
