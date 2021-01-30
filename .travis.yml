@@ -1,7 +1,8 @@
 language: node_js
 node_js:
 - '12'
-
+addons:
+  chrome: stable
 deploy_job: &DEPLOY_JOB
   cache:
     directories:
