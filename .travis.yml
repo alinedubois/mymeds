@@ -21,42 +21,49 @@ deploy_job: &DEPLOY_JOB
 jobs:
   include:
     - <<: *DEPLOY_JOB
+      stage: deploy
       name: "Deploy backend on DEV"
       if: type = push AND NOT branch = master
       env:
         - SERVICE_PATH="backend"
         - STAGE_NAME=dev
     - <<: *DEPLOY_JOB
+      stage: deploy
       name: "Deploy frontend on DEV"
       if: type = push AND NOT branch = master
       env:
         - SERVICE_PATH="frontend"
         - STAGE_NAME=dev
     - <<: *DEPLOY_JOB
+      stage: deploy
       name: "Deploy backend on DEV"
       if: type = pull_request AND NOT branch = master
       env:
         - SERVICE_PATH="backend"
         - STAGE_NAME=dev
     - <<: *DEPLOY_JOB
+      stage: deploy
       name: "Deploy frontend on DEV"
       if: type = pull_request AND NOT branch = master
       env:
         - SERVICE_PATH="frontend"
         - STAGE_NAME=dev
     - <<: *DEPLOY_JOB
+      stage: deploy
       name: "Deploy backend on PROD"
       if: type = push AND branch = master
       env:
         - SERVICE_PATH="backend"
         - STAGE_NAME=prod
     - <<: *DEPLOY_JOB
+      stage: deploy
       name: "Deploy frontend on PROD"
       if: type = push AND branch = master
       env:
         - SERVICE_PATH="frontend"
         - STAGE_NAME=prod
     - <<: *DEPLOY_JOB
+      stage: test
       name: "Tests on DEV"
       if: type = push AND NOT branch = master
       env:
