@@ -8,7 +8,7 @@ deploy_job: &DEPLOY_JOB
       - ${SERVICE_PATH}/node_modules
 
   install:
-    - npm install -g serverless surge
+    - npm install -g serverless surge @cucumber/cucumber
     - cd ${SERVICE_PATH}
     - travis_retry npm install
     - cd -
@@ -55,4 +55,9 @@ jobs:
       env:
         - SERVICE_PATH="frontend"
         - STAGE_NAME=prod
-
+    - <<: *DEPLOY_JOB
+      name: "Tests on DEV"
+      if: type = push AND NOT branch = master
+      env:
+        - SERVICE_PATH="tests"
+        - STAGE_NAME=dev

@@ -4,7 +4,7 @@
   "description": "Tests de bout en bout de l'application MyMeds",
   "main": "index.js",
   "scripts": {
-    "test": "cucumber-js --require steps_definitions/"
+    "deploy-dev": "cucumber-js --require steps_definitions/"
   },
   "author": "",
   "license": "ISC",
