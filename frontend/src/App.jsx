@@ -15,6 +15,7 @@ import {useAuth0} from "@auth0/auth0-react";
 import {Avatar, CircularProgress, Tooltip} from "@material-ui/core";
 import {AppMenu} from "./components/AppMenu";
 import {useStyles} from "./useStyles";
+import {callApi} from "./api/api";
 
 
 export const App = (props) => {
@@ -46,6 +47,8 @@ export const App = (props) => {
     };
 
     const container = window !== undefined ? () => window().document.body : undefined;
+
+    const [apiResult, setApiResult] = useState('');
 
     return (
         <div className={classes.root}>
@@ -138,6 +141,16 @@ export const App = (props) => {
             </nav>
             <main className={classes.content}>
                 <div className={classes.toolbar} />
+                <div>
+                    <button onClick={async () => {
+                        const result = await callApi({
+                            endpoint: '/auth',
+                            method: 'GET'
+                        });
+                        setApiResult(JSON.stringify(result));
+                    }}>Call API</button>
+                    <span>{apiResult}</span>
+                </div>
             </main>
         </div>
     );

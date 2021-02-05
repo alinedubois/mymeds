@@ -5,13 +5,15 @@ import * as serviceWorker from './serviceWorker';
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import {App} from "./App";
 import {Auth0Provider} from "@auth0/auth0-react";
+import {domain, clientId, audience} from './auth0';
 
 ReactDOM.render(
   <React.StrictMode>
       <Auth0Provider
-          domain="dev-mymeds.eu.auth0.com"
-          clientId="CudqgI5NIfKsEo7fEersJiDBF85FInOp"
+          domain={domain}
+          clientId={clientId}
           redirectUri="http://localhost:3000"
+          audience={audience}
       >
         <Router>
           <Switch>
