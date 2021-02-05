@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\"",
     "deploy-dev": "serverless deploy --stage=dev",
     "postdeploy-dev": "STAGE=dev AWS_REGION=eu-west-3 serverless migrations up",
-    "deploy-prod": "serverless deploy --stage=prod && STAGE=prod AWS_REGION=eu-west-3 serverless migrations up",
+    "deploy-prod": "serverless deploy --stage=prod",
     "postdeploy-prod": "STAGE=prod AWS_REGION=eu-west-3 serverless migrations up"
   },
   "author": "",
