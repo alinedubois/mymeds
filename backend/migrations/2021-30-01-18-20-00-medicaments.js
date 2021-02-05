@@ -4,6 +4,7 @@ const dynamoDbRepository = new DynamoDbBuilder()
     .createIfNotExists()
     .withKeyName("identifiant")
     .withTableName(`my-meds-${process.env.STAGE}-medicaments`)
+    .withWriteCapacity(50)
     .build();
 
 module.exports = {
@@ -20,10 +21,8 @@ module.exports = {
                 voieAdministration : informationsMedicament[3],
                 surveillanceRenforcee : informationsMedicament[11]
             };
-        });
-        for (const medicament of medicaments) {
-            await dynamoDbRepository.save(medicament);
-        }
+        }).filter(medicament => medicament.nom && medicament.nom.trim() !== '');
+        await dynamoDbRepository.saveAll(medicaments, 25);
         return Promise.resolve();
     },
     down: async () => {
