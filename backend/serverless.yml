@@ -14,6 +14,25 @@ provider:
     lambda: true
   environment:
     TAGS_TABLE: my-meds-${opt:stage, self:provider.stage}-tags
+  httpApi:
+    cors:
+      allowedHeaders:
+        - Content-Type
+        - Authorization
+      allowedMethods:
+        - GET
+        - OPTIONS
+      allowedOrigins:
+        - http://localhost:3000
+        - https://mymeds-dev.surge.sh
+        - https://mymeds.surge.sh
+    payload: '2.0'
+    authorizers:
+      accessTokenAuth0:
+        identitySource: $request.header.Authorization
+        issuerUrl: https://dev-mymeds.eu.auth0.com/
+        audience:
+          - https://my-meds-api-gateway/
   iamRoleStatements:
     - Effect: Allow
       Action:
@@ -75,9 +94,21 @@ functions:
       - httpApi:
           path: /tags
           method: get
+          authorizer:
+            name: accessTokenAuth0
   get-tag:
     handler: src/tags/functions.get
     events:
       - httpApi:
           path: /tags/{id}
           method: get
+          authorizer:
+            name: accessTokenAuth0
+  auth:
+    handler: src/tags/functions.auth
+    events:
+      - httpApi:
+          path: /auth
+          method: get
+          authorizer:
+            name: accessTokenAuth0
