@@ -1,16 +1,18 @@
 const fs = require('fs');
-const DynamoDbBuilder = require("aws-sdk-fluent-builder").DynamoDbBuilder;
-const dynamoDbRepository = new DynamoDbBuilder()
+const S3Builder = require("aws-sdk-fluent-builder").S3Builder;
+const stockageEnLigne = new S3Builder()
     .createIfNotExists()
-    .withKeyName("identifiant")
-    .withTableName(`my-meds-${process.env.STAGE}-medicaments`)
-    .withWriteCapacity(50)
+    .withBucketName("my-meds-fichiers")
+    .asStorageService()
     .build();
 
 module.exports = {
     up: async () => {
 
-        const medicamentsAuFormatTexte = fs.readFileSync(__dirname + '/medicaments.txt', 'latin1').split('\r\n');
+        const contenuDuFichierDesMedicaments = fs.readFileSync(__dirname + '/medicaments.txt', 'latin1');
+        await stockageEnLigne.writeFile('medicaments.txt', Buffer.from(contenuDuFichierDesMedicaments));
+/*
+        const medicamentsAuFormatTexte = fs.readFileSync(, 'latin1').split('\r\n');
 
         const medicaments = medicamentsAuFormatTexte.map(medicament => {
             const informationsMedicament = medicament.split("\t");
@@ -22,7 +24,7 @@ module.exports = {
                 surveillanceRenforcee : informationsMedicament[11]
             };
         }).filter(medicament => medicament.nom && medicament.nom.trim() !== '');
-        await dynamoDbRepository.saveAll(medicaments, 25);
+*/
         return Promise.resolve();
     },
     down: async () => {
