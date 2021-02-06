@@ -11,11 +11,9 @@ module.exports = {
     seDeconnecter: async () => {
         const page = scope.context.currentPage;
         const avatarImage = await page.$(`img[class='MuiAvatar-img']`);
-        if (avatarImage) {
-            await avatarImage.click();
-            const elementsDuMenuDeProfil = await page.$$(`li`);
-            await elementsDuMenuDeProfil[1].click();
-            await page.waitForNavigation();
-        }
+        await avatarImage.click();
+        const elementsDuMenuDeProfil = await page.$$(`li`);
+        await elementsDuMenuDeProfil[1].click();
+        await page.waitForNavigation();
     }
 }
