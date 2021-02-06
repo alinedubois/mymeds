@@ -7,5 +7,13 @@ module.exports = {
         const page = scope.context.currentPage;
         const avatarImage = await page.$(`img[alt='${nom}']`);
         expect(avatarImage).not.to.be.undefined;
+    },
+    seDeconnecter: async () => {
+        const page = scope.context.currentPage;
+        const avatarImage = await page.$(`img[class='MuiAvatar-img']`);
+        await avatarImage.click();
+        const elementsDuMenuDeProfil = await page.$$(`li`);
+        await elementsDuMenuDeProfil[1].click();
+        await page.waitForNavigation();
     }
 }

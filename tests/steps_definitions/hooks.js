@@ -2,12 +2,14 @@ const { After, Before, AfterAll } = require('@cucumber/cucumber');
 const scope = require('./support/scope');
 const recupererUtilisateurs = require('./utilisateurs/recupererUtilisateurs');
 const supprimerUtilisateur = require('./utilisateurs/supprimerUtilisateur');
+const pageDAccueil = require('../pages/accueil');
 
 Before(async () => {
     // You can clean up database models here
 });
 
 After(async () => {
+    await pageDAccueil.seDeconnecter();
     if (scope.browser && scope.context.currentPage) {
         const cookies = await scope.context.currentPage.cookies();
         if (cookies && cookies.length > 0) {

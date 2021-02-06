@@ -5,6 +5,8 @@ const {setDefaultTimeout} = require('@cucumber/cucumber');
 const pageDeLogin = require('../../pages/login');
 const pageDAccueil = require('../../pages/accueil');
 const ouvrir = require('../../pages/ouvrir');
+const scope = require('../support/scope');
+const {expect} = require('chai');
 
 setDefaultTimeout(60 * 1000);
 
