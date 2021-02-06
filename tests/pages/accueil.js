@@ -15,5 +15,12 @@ module.exports = {
         const elementsDuMenuDeProfil = await page.$$(`li`);
         await elementsDuMenuDeProfil[1].click();
         await page.waitForNavigation();
+    },
+    rechercher: async  (motCle) => {
+        const page = scope.context.currentPage;
+        await page.type("", motCle);
+    },
+    verifierQueTousLesResultatsContiennentLeMot : async (motCle) => {
+
     }
-}
+};
