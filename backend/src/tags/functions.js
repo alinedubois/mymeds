@@ -19,7 +19,7 @@ module.exports.get = async event => {
     return ok(tag);
 }
 
-module.exports.auth = event => {
+module.exports.auth = async event => {
     const utilisateur = utilisateurConnecte(event);
     if (utilisateur.estAdministrateur()) {
         return ok('ADMIN');
