@@ -4,6 +4,8 @@ function hasNoContent(response) {
     return response.status === 204 || response.status === 403;
 }
 
+const BACKEND_URL = 'https://4rfsly0mhi.execute-api.eu-west-3.amazonaws.com';
+
 export async function callApi(options) {
     const { method, endpoint, query, body } = options;
 
@@ -23,7 +25,7 @@ export async function callApi(options) {
         request.body = JSON.stringify(body);
     }
 
-    let url = 'https://i4mu3g1314.execute-api.eu-west-3.amazonaws.com' + endpoint;
+    let url = BACKEND_URL + endpoint;
 
     if (query) url += "?" + new URL(query);
 
