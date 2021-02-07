@@ -1,7 +1,6 @@
 const {ok, badRequest} = require("aws-lambda-utils");
 const S3Builder = require("aws-sdk-fluent-builder").S3Builder;
 const stockageEnLigne = new S3Builder()
-    .createIfNotExists()
     .withBucketName("my-meds-fichiers")
     .asStorageService()
     .build();
