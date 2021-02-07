@@ -11,7 +11,6 @@
     "@testing-library/react": "11.2.5",
     "@testing-library/user-event": "12.6.3",
     "react": "17.0.1",
-    "react-async": "10.0.1",
     "react-dom": "17.0.1",
     "react-router-dom": "5.2.0",
     "react-scripts": "4.0.2"
@@ -22,7 +21,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "deploy-dev": "sed -i 's/CudqgI5NIfKsEo7fEersJiDBF85FInOp/'\"$OAUTH0_DEV_CLIENT_ID\"'/g' src/auth0.js && sed -i 's/http:\\/\\/localhost:3000/https:\\/\\/mymeds-dev\\.surge\\.sh/g' src/index.jsx && npm run build && surge build/ mymeds-dev.surge.sh",
-    "deploy-prod": "sed -i 's/CudqgI5NIfKsEo7fEersJiDBF85FInOp/'\"$OAUTH0_PROD_CLIENT_ID\"'/g' src/auth0.js && sed -i 's/http:\\/\\/localhost:3000/https:\\/\\/mymeds\\.surge\\.sh/g' src/index.jsx && npm run build && surge build/ mymeds.surge.sh"
+    "deploy-prod": "sed -i 's/4rfsly0mhi/dzmwu65136/g' src/api/api.js && sed -i 's/CudqgI5NIfKsEo7fEersJiDBF85FInOp/'\"$OAUTH0_PROD_CLIENT_ID\"'/g' src/auth0.js && sed -i 's/http:\\/\\/localhost:3000/https:\\/\\/mymeds\\.surge\\.sh/g' src/index.jsx && npm run build && surge build/ mymeds.surge.sh"
   },
   "eslintConfig": {
     "extends": "react-app"
