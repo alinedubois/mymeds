@@ -81,3 +81,9 @@ functions:
       - httpApi:
           path: /tags/{id}
           method: get
+  hello:
+    handler: src/medicaments/recherche.rechercher
+    events:
+      - httpApi:
+          path: /medicaments
+          method: get
