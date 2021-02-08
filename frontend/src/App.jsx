@@ -144,7 +144,7 @@ export const App = (props) => {
                 <div>
                     <button onClick={async () => {
                         const result = await callApi({
-                            endpoint: '/auth',
+                            endpoint: '/tags',
                             method: 'GET'
                         });
                         setApiResult(JSON.stringify(result));
