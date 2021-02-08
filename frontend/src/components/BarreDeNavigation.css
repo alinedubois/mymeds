@@ -1,0 +1,16 @@
+.AppBarContenu {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.AppBarIcones {
+    display: flex;
+    flex-direction: row-reverse;
+    width: 100%;
+}
+
+.AppTitre {
+    width: 33%;
+    padding-top: 16px;
+}
