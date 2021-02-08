@@ -89,7 +89,7 @@ package:
 
 functions:
   list-tags:
-    handler: src/tags/functions.list
+    handler: src/tags/recupererListeDeTags.handler
     events:
       - httpApi:
           path: /tags
@@ -97,18 +97,10 @@ functions:
           authorizer:
             name: accessTokenAuth0
   get-tag:
-    handler: src/tags/functions.get
+    handler: src/tags/recupererTag.handler
     events:
       - httpApi:
           path: /tags/{id}
-          method: get
-          authorizer:
-            name: accessTokenAuth0
-  auth:
-    handler: src/tags/functions.auth
-    events:
-      - httpApi:
-          path: /auth
           method: get
           authorizer:
             name: accessTokenAuth0
