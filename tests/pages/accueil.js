@@ -10,7 +10,11 @@ module.exports = {
     },
     seDeconnecter: async () => {
         const page = scope.context.currentPage;
-        const avatarImage = await page.$(`img[class='MuiAvatar-img']`);
+        const selecteurDeLAvatar = `img[class='MuiAvatar-img']`;
+        await page.waitForSelector(selecteurDeLAvatar, {
+            visible: true
+        });
+        const avatarImage = await page.$(selecteurDeLAvatar);
         await avatarImage.click();
         const elementsDuMenuDeProfil = await page.$$(`li`);
         await elementsDuMenuDeProfil[1].click();

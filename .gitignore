@@ -29,3 +29,5 @@
 *.iml
 
 /backend/.serverless
+
+/tests/Dockerfile
