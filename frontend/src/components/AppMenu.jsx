@@ -7,7 +7,6 @@ import {useTheme} from "@material-ui/core/styles";
 
 export const AppMenu = (props) => {
 
-    const { window } = props;
     const classes = useStyles();
     const { window } = props;
 
