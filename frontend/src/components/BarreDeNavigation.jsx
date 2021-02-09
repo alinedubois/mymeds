@@ -12,6 +12,7 @@ import {useAuth0} from "@auth0/auth0-react";
 import './BarreDeNavigation.css';
 
 export const BarreDeNavigation = (props) => {
+
     const { user, isAuthenticated, isLoading, loginWithRedirect, logout } = useAuth0();
 
     useEffect(() => {
@@ -19,12 +20,14 @@ export const BarreDeNavigation = (props) => {
             loginWithRedirect();
         }
     });
+
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
     const handleMenu = (event) => {
         setAnchorEl(event.currentTarget);
     };
+
     const handleClose = () => {
         setAnchorEl(null);
     };
@@ -86,4 +89,4 @@ export const BarreDeNavigation = (props) => {
             </Toolbar>
         </AppBar>
     );
-}
+};
