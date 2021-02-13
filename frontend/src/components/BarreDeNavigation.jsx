@@ -6,6 +6,7 @@ import './BarreDeNavigation.css';
 import {BoutonMenu} from "./BoutonMenu";
 import {Titre} from "./Titre";
 import {IdentificationAvatar} from "./IdentificationAvatar";
+import {Recherche} from "./Recherche";
 
 export const BarreDeNavigation = (props) => {
 
@@ -17,6 +18,7 @@ export const BarreDeNavigation = (props) => {
                 <BoutonMenu basculerMenu={props.basculerMenu}/>
                 <div className="AppBarContenu">
                     <Titre/>
+                    <Recherche/>
                     <IdentificationAvatar/>
                 </div>
             </Toolbar>
