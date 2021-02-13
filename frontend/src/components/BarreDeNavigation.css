@@ -12,5 +12,19 @@
 
 .AppTitre {
     min-width: 200px;
-    padding-top: 16px;
+}
+
+.AppBarTitre {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.Avatar {
+    width: 30px;
+    height: 30px;
+}
+
+.BoutonAvatar {
+    padding: 0 !important;
 }

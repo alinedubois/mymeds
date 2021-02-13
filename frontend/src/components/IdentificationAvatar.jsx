@@ -28,7 +28,7 @@ export const IdentificationAvatar = () => {
                 <div className="AppBarIcones">
                     <CircularProgress
                         color="secondary"
-                        size={30}
+                        size={38}
                     />
                 </div>
             )}
@@ -40,11 +40,14 @@ export const IdentificationAvatar = () => {
                         aria-haspopup="true"
                         onClick={ouvrirMenuAvatar}
                         color="inherit"
+                        className="BoutonAvatar"
                     >
                         <Tooltip title={user.name}>
                             <Avatar
                                 alt={user.name}
-                                src={user.picture}/>
+                                src={user.picture}
+                                className="Avatar"/>
+
                         </Tooltip>
                     </IconButton>
                     <Menu
