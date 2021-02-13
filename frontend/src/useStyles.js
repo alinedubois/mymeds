@@ -14,14 +14,14 @@ export const useStyles = makeStyles((theme) => ({
     },
     appBar: {
         [theme.breakpoints.up('sm')]: {
-            width: `calc(100% - ${drawerWidth}px)`,
+            width: `calc(100% - ${drawerWidth}px) !important`,
             marginLeft: drawerWidth,
         },
     },
     menuButton: {
-        marginRight: theme.spacing(2),
+        marginRight: theme.spacing(2) + ' !important',
         [theme.breakpoints.up('sm')]: {
-            display: 'none',
+            display: 'none !important',
         },
     },
     // necessary for content to be below app bar
@@ -58,14 +58,14 @@ export const useStyles = makeStyles((theme) => ({
         justifyContent: 'center',
     },
     inputRoot: {
-        color: 'inherit',
+        color: 'inherit !important',
     },
     inputInput: {
-        padding: theme.spacing(1, 1, 1, 0),
+        padding: theme.spacing(1, 1, 1, 0) + ' !important',
         // vertical padding + font size from searchIcon
-        paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
+        paddingLeft: `calc(1em + ${theme.spacing(4)}px) !important`,
         transition: theme.transitions.create('width'),
-        width: '100%',
+        width: '100% !important',
         [theme.breakpoints.up('md')]: {
             width: '20ch',
         },
