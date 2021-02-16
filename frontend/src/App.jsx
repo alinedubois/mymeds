@@ -4,7 +4,6 @@ import './App.css';
 import {useStyles} from "./useStyles";
 import {AppMenu} from "./components/AppMenu";
 import {BarreDeNavigation} from "./components/BarreDeNavigation";
-import {callApi} from "./api/api";
 
 export const App = () => {
     const classes = useStyles();
@@ -14,7 +13,6 @@ export const App = () => {
         setMenuOuvertEnModeMobile(!menuOuvertEnModeMobile);
     };
 
-    const [apiResult, setApiResult] = useState('');
 
     return (
         <div className={classes.root}>
@@ -26,16 +24,6 @@ export const App = () => {
                 basculerMenu={basculerMenu} />
             <main className={classes.content}>
                 <div className={classes.toolbar} />
-                <div>
-                    <button onClick={async () => {
-                        const result = await callApi({
-                            endpoint: '/tags',
-                            method: 'GET'
-                        });
-                        setApiResult(JSON.stringify(result));
-                    }}>Call API</button>
-                    <span>{apiResult}</span>
-                </div>
             </main>
         </div>
     );

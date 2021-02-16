@@ -115,3 +115,5 @@ functions:
       - httpApi:
           path: /medicaments
           method: get
+          authorizer:
+            name: accessTokenAuth0
