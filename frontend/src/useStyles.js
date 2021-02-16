@@ -57,13 +57,12 @@ export const useStyles = makeStyles((theme) => ({
         alignItems: 'center',
         justifyContent: 'center',
     },
-    inputRoot: {
-        color: 'inherit !important',
-    },
-    inputInput: {
+    inputAutoComplete: {
+        // color: 'white !important',
         padding: theme.spacing(1, 1, 1, 0) + ' !important',
         // vertical padding + font size from searchIcon
         paddingLeft: `calc(1em + ${theme.spacing(4)}px) !important`,
+        paddingTop: '10px !important',
         transition: theme.transitions.create('width'),
         width: '100% !important',
         [theme.breakpoints.up('md')]: {
