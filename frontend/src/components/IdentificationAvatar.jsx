@@ -4,6 +4,7 @@ import Menu from "@material-ui/core/Menu/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import React, {useEffect, useState} from "react";
 import {useAuth0} from "@auth0/auth0-react";
+import {useStyles} from "../useStyles";
 
 export const IdentificationAvatar = () => {
 
@@ -21,6 +22,9 @@ export const IdentificationAvatar = () => {
     const fermerMenuAvatar = () => {
         modifierAncreDuMenuAvatar(null);
     };
+
+    const classes = useStyles();
+
 
     return (
         <React.Fragment>
@@ -46,7 +50,8 @@ export const IdentificationAvatar = () => {
                             <Avatar
                                 alt={user.name}
                                 src={user.picture}
-                                className="Avatar"/>
+                                className="Avatar"
+                            />
 
                         </Tooltip>
                     </IconButton>
