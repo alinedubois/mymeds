@@ -23,3 +23,7 @@
 .MuiInput-underline.Mui-focused:after {
   border-bottom: 0 !important;
 }
+
+.MuiAutocomplete-popper {
+  width: 500px !important;
+}

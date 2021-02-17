@@ -5,9 +5,8 @@ import './BarreDeNavigation.css';
 export const Titre = () => {
     return (
         <div className="AppBarTitre">
-            <Typography variant="h6" noWrap className="AppTitre">
-                My Meds
-            </Typography>
+            <img src="logo.png"
+            className="AppTitre"/>
         </div>
     );
 

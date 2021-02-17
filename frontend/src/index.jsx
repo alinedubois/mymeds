@@ -6,22 +6,36 @@ import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import {App} from "./App";
 import {Auth0Provider} from "@auth0/auth0-react";
 import {domain, clientId, audience} from './auth0';
+import {createMuiTheme, ThemeProvider} from "@material-ui/core/styles";
+
+const theme = createMuiTheme({
+    palette: {
+        primary: {
+            main: '#f6f6f6',
+        },
+        secondary: {
+            main: '#cddc39',
+        },
+    },
+});
 
 ReactDOM.render(
-      <Auth0Provider
-          domain={domain}
-          clientId={clientId}
-          redirectUri="http://localhost:3000"
-          audience={audience}
-      >
-        <Router>
-          <Switch>
-            <Route path="/">
-              <App />
-            </Route>
-          </Switch>
-        </Router>
-      </Auth0Provider>
+    <ThemeProvider theme={theme}>
+        <Auth0Provider
+            domain={domain}
+            clientId={clientId}
+            redirectUri="http://localhost:3000"
+            audience={audience}
+        >
+            <Router>
+                <Switch>
+                    <Route path="/">
+                        <App />
+                    </Route>
+                </Switch>
+            </Router>
+        </Auth0Provider>
+    </ThemeProvider>
     ,
   document.getElementById('root')
 );
