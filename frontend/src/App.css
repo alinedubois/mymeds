@@ -26,4 +26,5 @@
 
 .MuiAutocomplete-popper {
   width: 500px !important;
+  left: 80px !important;
 }

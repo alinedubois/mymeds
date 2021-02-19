@@ -1,13 +1,10 @@
-import InputBase from '@material-ui/core/InputBase';
 import {useStyles} from "../useStyles";
 import SearchIcon from '@material-ui/icons/Search';
-import {useState} from "react";
+import React, {useState} from "react";
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import React from "react";
 import {callApi} from "../api/api";
 import TextField from '@material-ui/core/TextField';
-
 
 
 export const Recherche = (props) => {
@@ -28,7 +25,7 @@ export const Recherche = (props) => {
                 style={{ width: 300 }}
                 getOptionLabel={(option) => option.nom}
                 options={options}
-                open={open}
+                open={options?.length > 0 ? open : false}
                 onClose={() => {
                     setOpen(false);
                     setOptions([]);
@@ -59,7 +56,9 @@ export const Recherche = (props) => {
                                 if (declenchementRecherche) {
                                     clearTimeout(declenchementRecherche);
                                 }
-                                declenchementRecherche= setTimeout(async () =>{
+                                declenchementRecherche = setTimeout(async () =>{
+                                    setOptions([]);
+                                    setOpen(false);
                                     setLoading (true);
                                     const medicaments = await callApi({
                                         endpoint: '/medicaments',
@@ -72,6 +71,15 @@ export const Recherche = (props) => {
 
                                 }, 500);
                             }
+                        }}
+                        InputProps={{
+                            ...params.InputProps,
+                            endAdornment: (
+                                <React.Fragment>
+                                    {loading ? <CircularProgress color="inherit" size={20} /> : null}
+                                    {params.InputProps.endAdornment}
+                                </React.Fragment>
+                            ),
                         }}
                     />
 
