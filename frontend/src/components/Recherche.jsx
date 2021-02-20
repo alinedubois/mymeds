@@ -76,7 +76,7 @@ export const Recherche = (props) => {
                             ...params.InputProps,
                             endAdornment: (
                                 <React.Fragment>
-                                    {loading ? <CircularProgress color="inherit" size={20} /> : null}
+                                    {loading ? <CircularProgress color="secondary" size={20} /> : null}
                                     {params.InputProps.endAdornment}
                                 </React.Fragment>
                             ),
