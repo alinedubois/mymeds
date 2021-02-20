@@ -22,9 +22,14 @@ module.exports = {
     },
     rechercher: async  (motCle) => {
         const page = scope.context.currentPage;
-        await page.type("", motCle);
+        await page.type(`input[id='recherche']`, motCle);
     },
     verifierQueTousLesResultatsContiennentLeMot : async (motCle) => {
+        const page = scope.context.currentPage;
+        const resultatsDeRecherche = await page.$$(`div[data-testid='resultat-recherche']`);
 
+        for (const resultat of resultatsDeRecherche){
+            expect (resultat.innerText.toLowerCase()).to.equal(motCle.toLowerCase());
+        }
     }
 };

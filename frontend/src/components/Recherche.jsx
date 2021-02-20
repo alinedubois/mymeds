@@ -7,7 +7,7 @@ import {callApi} from "../api/api";
 import TextField from '@material-ui/core/TextField';
 
 
-export const Recherche = (props) => {
+export const Recherche = () => {
 
     const classes = useStyles();
     const [open, setOpen] = useState(false);
@@ -18,11 +18,11 @@ export const Recherche = (props) => {
     return (
         <div className={classes.search}>
             <div className={classes.searchIcon}>
-                <SearchIcon />
+                <SearchIcon/>
             </div>
             <Autocomplete
                 id="recherche"
-                style={{ width: 300 }}
+                style={{width: 300}}
                 getOptionLabel={(option) => option.nom}
                 options={options}
                 open={options?.length > 0 ? open : false}
@@ -32,17 +32,8 @@ export const Recherche = (props) => {
                 }}
                 onOpen={() => setOpen(true)}
                 clearText="Effacer"
-                renderOption={(option) => (
-                    <React.Fragment>
-                        <div style={{width: '400px !important'}}>
-                            <div style={{width: '200px !important'}}>
-                                {option.nom}
-                            </div>
-                            <div style={{width: '200px !important'}}>({option.formePharmaceutique})</div>
-                        </div>
-                    </React.Fragment>
-                )}
-                // loading={loading}
+                renderOption={(option) => (<div data-testid="resultat-recherche">{option.nom}</div>)}
+                loading={loading}
                 renderInput={(params) => (
                     <TextField
                         {...params}
@@ -56,18 +47,18 @@ export const Recherche = (props) => {
                                 if (declenchementRecherche) {
                                     clearTimeout(declenchementRecherche);
                                 }
-                                declenchementRecherche = setTimeout(async () =>{
+                                declenchementRecherche = setTimeout(async () => {
                                     setOptions([]);
                                     setOpen(false);
-                                    setLoading (true);
+                                    setLoading(true);
                                     const medicaments = await callApi({
                                         endpoint: '/medicaments',
-                                        query: "recherche="+ motCle,
+                                        query: "recherche=" + motCle,
                                         method: 'GET'
                                     });
-                                    setOpen (true);
-                                    setLoading (false);
-                                    setOptions (medicaments);
+                                    setOpen(true);
+                                    setLoading(false);
+                                    setOptions(medicaments);
 
                                 }, 500);
                             }
@@ -76,7 +67,7 @@ export const Recherche = (props) => {
                             ...params.InputProps,
                             endAdornment: (
                                 <React.Fragment>
-                                    {loading ? <CircularProgress color="secondary" size={20} /> : null}
+                                    {loading ? <CircularProgress color="secondary" size={20}/> : null}
                                     {params.InputProps.endAdornment}
                                 </React.Fragment>
                             ),
