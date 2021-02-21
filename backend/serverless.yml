@@ -14,6 +14,7 @@ provider:
     lambda: true
   environment:
     TAGS_TABLE: my-meds-${opt:stage, self:provider.stage}-tags
+    MEDICAMENTS_UTILISATEURS_TABLE: my-meds-${opt:stage, self:provider.stage}-medicaments-utilisateurs
   httpApi:
     cors:
       allowedHeaders:
@@ -117,3 +118,12 @@ functions:
           method: get
           authorizer:
             name: accessTokenAuth0
+  medicament-utilisateur-ajout:
+    handler: src/medicaments/ajout.ajouterAUtilisateur
+    events:
+      - httpApi:
+          path: /utilisateurs/{id}/medicaments
+          method: post
+          authorizer:
+            name: accessTokenAuth0
+
