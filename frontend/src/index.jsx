@@ -2,11 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
-import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import {App} from "./App";
 import {Auth0Provider} from "@auth0/auth0-react";
 import {domain, clientId, audience} from './auth0';
 import {createMuiTheme, ThemeProvider} from "@material-ui/core/styles";
+import {BrowserRouter as Router} from "react-router-dom";
 
 const theme = createMuiTheme({
     palette: {
@@ -28,11 +28,7 @@ ReactDOM.render(
             audience={audience}
         >
             <Router>
-                <Switch>
-                    <Route path="/">
-                        <App />
-                    </Route>
-                </Switch>
+                <App />
             </Router>
         </Auth0Provider>
     </ThemeProvider>
