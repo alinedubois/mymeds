@@ -5,6 +5,7 @@ import fr.alinedubois.mymeds.referentiel.domaine.modele.Medicament;
 import fr.alinedubois.mymeds.referentiel.infrastructure.fichier.ReferentielFichier;
 import fr.alinedubois.mymeds.referentiel.infrastructure.rest.ReferentielRest;
 import org.junit.jupiter.api.Test;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
@@ -14,7 +15,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class ReferentielTest {
     private ReferentielRest referentielRest = new ReferentielRest(
-            new RechercheDeMedicamentsParNom(new ReferentielFichier())
+        new RechercheDeMedicamentsParNom(new ReferentielFichier(new ClassPathResource("referentiel/medicaments.txt")))
     );
     @Test
     void doit_retourner_une_erreur_400_quand_le_nom_du_medicament_n_est_pas_renseigne() {
