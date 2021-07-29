@@ -1,0 +1,6 @@
+<div class="medicament" [ngClass]="{'medicament-surveillance':medicament?.surveillanceRenforcee===true}">
+  <div>{{medicament?.nom | uppercase}}</div>
+  <div>{{medicament?.administration}}</div>
+  <div *ngIf="medicament?.surveillanceRenforcee===true">Nécessite une surveillance renforcée</div>
+  <div>{{medicament?.forme}}</div>
+</div>

@@ -1,0 +1,11 @@
+.medicament {
+  text-align: center;
+  border-radius: 4px;
+  border: 1px solid darkgreen;
+  padding: 10px;
+  background-color: mediumspringgreen;
+}
+
+.medicament-surveillance {
+  background-color: coral !important;
+}

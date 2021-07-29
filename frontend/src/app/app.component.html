@@ -1,0 +1,8 @@
+<div>
+  <h1 class="titre">LISTE DES MEDICAMENTS</h1>
+  <p class="texte">Ceci est la liste des médicaments de votre pharmacie. Cliquez sur l'un d'entre eux pour en avoir le détail.</p>
+  <input type="text" #champ [value]="valeur" (input)="valeur=champ.value"/> {{valeur}}
+  <div class="medicaments">
+    <fiche-medicament *ngFor="let medicament of medicaments" [medicament]="medicament"></fiche-medicament>
+  </div>
+</div>

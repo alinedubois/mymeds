@@ -1,0 +1,22 @@
+.titre {
+  text-align: center;
+  margin-top: 20px;
+  color: maroon;
+}
+
+.texte {
+  text-align: center;
+}
+
+.medicaments {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 50px;
+  justify-content: center;
+}
+
+
+
+
