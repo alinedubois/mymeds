@@ -11,6 +11,6 @@ export class ReferentielMedicamentsService {
   constructor(private httpClient:HttpClient) { }
 
   medicaments(): Observable<Array<Medicament>> {
-    return this.httpClient.get<Array<Medicament>>('http://localhost:8080/api/referentiel/medicaments?nom=dol');
+    return this.httpClient.get<Array<Medicament>>('http://mymeds-backend.herokuapp.com/api/referentiel/medicaments?nom=dol');
   }
 }
