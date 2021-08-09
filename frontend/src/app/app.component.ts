@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {Medicament} from "./fiche-medicament/fiche-medicament.component";
 import {ReferentielMedicamentsService} from "./referentiel-medicaments.service";
+import {AuthService} from "@auth0/auth0-angular";
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,7 @@ export class AppComponent {
   medicaments: Array<Medicament> = [];
   valeur="coucou";
 
-  constructor(private referentiel: ReferentielMedicamentsService) {
+  constructor(public auth: AuthService, private referentiel: ReferentielMedicamentsService) {
     this.referentiel.medicaments().subscribe(medicamentsResponse=>this.medicaments=medicamentsResponse);
   }
 }

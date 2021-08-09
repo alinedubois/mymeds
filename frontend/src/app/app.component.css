@@ -17,6 +17,10 @@
   justify-content: center;
 }
 
+.separateur {
+  flex: 1 1 auto;
+}
+
 
 
 
