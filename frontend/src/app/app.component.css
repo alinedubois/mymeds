@@ -21,6 +21,16 @@
   flex: 1 1 auto;
 }
 
+.utilisateur {
+  margin-right: 10px;
+}
+
+.menu-utilisateur {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
 
 
 
