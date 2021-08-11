@@ -12,11 +12,21 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {MatMenuModule} from "@angular/material/menu";
 import {MatButtonModule} from "@angular/material/button";
+import {MatAutocompleteModule} from "@angular/material/autocomplete";
+import { AppBarComponent } from './app-bar/app-bar.component';
+import { CompteUtilisateurComponent } from './app-bar/compte-utilisateur/compte-utilisateur.component';
+import { AjoutMedicamentComponent } from './app-bar/ajout-medicament/ajout-medicament.component';
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {ReactiveFormsModule} from "@angular/forms";
+import {MatInputModule} from "@angular/material/input";
 
 @NgModule({
   declarations: [
     AppComponent,
     FicheMedicamentComponent,
+    AppBarComponent,
+    CompteUtilisateurComponent,
+    AjoutMedicamentComponent,
   ],
   imports: [
     BrowserModule,
@@ -27,11 +37,15 @@ import {MatButtonModule} from "@angular/material/button";
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
     MatToolbarModule,
     MatIconModule,
     MatProgressSpinnerModule,
     MatMenuModule,
-    MatButtonModule
+    MatButtonModule,
+    MatAutocompleteModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

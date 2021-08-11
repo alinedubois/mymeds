@@ -1,0 +1,14 @@
+<form class="formulaire-recherche-medicament">
+  <mat-form-field class="full-width no-padding" appearance="fill">
+    <input type="text"
+           placeholder="Rechercher un médicament"
+           matInput
+           [formControl]="myControl"
+           [matAutocomplete]="auto">
+    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+      <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+        {{option}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</form>

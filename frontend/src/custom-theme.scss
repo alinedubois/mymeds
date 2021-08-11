@@ -33,3 +33,18 @@ $frontend-theme: mat.define-light-theme((
 // that you are using.
 @include mat.all-component-themes($frontend-theme);
 
+.mat-toolbar-multiple-rows {
+  min-height: 80px;
+}
+
+.mat-toolbar-row, .mat-toolbar-single-row {
+  height: 80px;
+}
+
+.mat-form-field-appearance-fill .mat-form-field-infix {
+  padding: 0;
+}
+
+.mat-form-field-infix {
+  padding: 0;
+}
