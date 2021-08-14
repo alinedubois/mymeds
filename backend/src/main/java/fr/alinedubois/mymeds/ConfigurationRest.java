@@ -1,4 +1,4 @@
-package fr.alinedubois.mymeds.referentiel.infrastructure.rest;
+package fr.alinedubois.mymeds;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
