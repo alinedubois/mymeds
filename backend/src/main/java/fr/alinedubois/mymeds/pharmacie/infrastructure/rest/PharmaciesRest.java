@@ -16,7 +16,6 @@ public class PharmaciesRest {
 
     @GetMapping("/api/pharmacies/{emailUtilisateur}")
     public ResponseEntity<Pharmacie> recupererPourUtilisateur(String emailUtilisateur) {
-
         return ResponseEntity.ok(this.recuperationDeLaPharmacie.recupererPourUtilisateur(emailUtilisateur));
     }
 }

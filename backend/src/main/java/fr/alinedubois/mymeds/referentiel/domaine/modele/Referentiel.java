@@ -4,4 +4,5 @@ import java.util.List;
 
 public interface Referentiel {
     List<Medicament> medicamentsDontLeNomContient (String nom);
+    Medicament parIdentifiant(String identifiant);
 }
