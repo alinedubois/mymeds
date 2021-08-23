@@ -1,4 +1,4 @@
-package fr.alinedubois.mymeds.pharmacie.domaine.modele;
+package fr.alinedubois.mymeds.pharmaciev1.domaine.modele;
 
 import java.util.ArrayList;
 import java.util.Collections;

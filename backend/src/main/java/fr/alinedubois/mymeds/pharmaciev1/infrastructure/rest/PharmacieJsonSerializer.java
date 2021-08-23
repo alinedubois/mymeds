@@ -1,10 +1,10 @@
-package fr.alinedubois.mymeds.pharmacie.infrastructure.rest;
+package fr.alinedubois.mymeds.pharmaciev1.infrastructure.rest;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
-import fr.alinedubois.mymeds.pharmacie.domaine.modele.BoiteDeMedicament;
-import fr.alinedubois.mymeds.pharmacie.domaine.modele.Pharmacie;
+import fr.alinedubois.mymeds.pharmaciev1.domaine.modele.BoiteDeMedicament;
+import fr.alinedubois.mymeds.pharmaciev1.domaine.modele.Pharmacie;
 import org.springframework.boot.jackson.JsonComponent;
 
 import java.io.IOException;

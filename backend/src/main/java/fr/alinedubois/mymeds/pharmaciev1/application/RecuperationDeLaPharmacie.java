@@ -1,7 +1,7 @@
-package fr.alinedubois.mymeds.pharmacie.application;
+package fr.alinedubois.mymeds.pharmaciev1.application;
 
-import fr.alinedubois.mymeds.pharmacie.domaine.modele.Pharmacie;
-import fr.alinedubois.mymeds.pharmacie.domaine.modele.Pharmacies;
+import fr.alinedubois.mymeds.pharmaciev1.domaine.modele.Pharmacie;
+import fr.alinedubois.mymeds.pharmaciev1.domaine.modele.Pharmacies;
 import org.springframework.stereotype.Component;
 
 @Component

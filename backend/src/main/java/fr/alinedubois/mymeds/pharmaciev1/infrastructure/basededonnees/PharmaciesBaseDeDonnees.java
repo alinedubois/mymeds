@@ -1,8 +1,8 @@
-package fr.alinedubois.mymeds.pharmacie.infrastructure.basededonnees;
+package fr.alinedubois.mymeds.pharmaciev1.infrastructure.basededonnees;
 
-import fr.alinedubois.mymeds.pharmacie.domaine.modele.BoiteDeMedicament;
-import fr.alinedubois.mymeds.pharmacie.domaine.modele.Pharmacie;
-import fr.alinedubois.mymeds.pharmacie.domaine.modele.Pharmacies;
+import fr.alinedubois.mymeds.pharmaciev1.domaine.modele.BoiteDeMedicament;
+import fr.alinedubois.mymeds.pharmaciev1.domaine.modele.Pharmacie;
+import fr.alinedubois.mymeds.pharmaciev1.domaine.modele.Pharmacies;
 import fr.alinedubois.mymeds.referentiel.domaine.modele.Medicament;
 import fr.alinedubois.mymeds.referentiel.domaine.modele.Referentiel;
 import org.springframework.jdbc.core.JdbcTemplate;

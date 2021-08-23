@@ -1,7 +1,7 @@
-package fr.alinedubois.mymeds.pharmacie.infrastructure.rest;
+package fr.alinedubois.mymeds.pharmaciev1.infrastructure.rest;
 
-import fr.alinedubois.mymeds.pharmacie.application.RecuperationDeLaPharmacie;
-import fr.alinedubois.mymeds.pharmacie.domaine.modele.Pharmacie;
+import fr.alinedubois.mymeds.pharmaciev1.application.RecuperationDeLaPharmacie;
+import fr.alinedubois.mymeds.pharmaciev1.domaine.modele.Pharmacie;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
