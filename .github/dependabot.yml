@@ -35,8 +35,3 @@ updates:
   - dependency-name: "@auth0/auth0-react"
     versions:
     - 1.3.0
-- package-ecosystem: npm
-  directory: "/backend"
-  schedule:
-    interval: daily
-  open-pull-requests-limit: 10
