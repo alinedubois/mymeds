@@ -19,7 +19,7 @@ import {AjoutMedicamentComponent} from './app-bar/ajout-medicament/ajout-medicam
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
-import {PharmacieComponent} from './pharmacie/pharmacie.component';
+//import {PharmacieComponent} from './pharmacie/pharmacie.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +28,7 @@ import {PharmacieComponent} from './pharmacie/pharmacie.component';
     AppBarComponent,
     CompteUtilisateurComponent,
     AjoutMedicamentComponent,
-    PharmacieComponent,
+    //PharmacieComponent,
   ],
   imports: [
     BrowserModule,
