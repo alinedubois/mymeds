@@ -19,7 +19,10 @@ import {AjoutMedicamentComponent} from './app-bar/ajout-medicament/ajout-medicam
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
-//import {PharmacieComponent} from './pharmacie/pharmacie.component';
+import {PharmacieComponent} from './pharmacie/pharmacie.component';
+import {MatCardModule} from "@angular/material/card";
+import {DelaiDePeremptionPipe} from './pharmacie/delai-de-peremption.pipe';
+import {DatePipe} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -28,7 +31,8 @@ import {MatInputModule} from "@angular/material/input";
     AppBarComponent,
     CompteUtilisateurComponent,
     AjoutMedicamentComponent,
-    //PharmacieComponent,
+    PharmacieComponent,
+    DelaiDePeremptionPipe,
   ],
   imports: [
     BrowserModule,
@@ -47,9 +51,10 @@ import {MatInputModule} from "@angular/material/input";
     MatButtonModule,
     MatAutocompleteModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatCardModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
