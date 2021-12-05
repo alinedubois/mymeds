@@ -1,0 +1,11 @@
+.medicament-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 40px;
+}
+
+.medicament {
+  max-width: 300px;
+}
