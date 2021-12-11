@@ -8,4 +8,18 @@
 
 .medicament {
   max-width: 300px;
+  border-left-width: 4px;
+  border-left-style: solid;
+}
+
+.medicament.valide {
+  border-left-color: green;
+}
+
+.medicament.perime {
+  border-left-color: red;
+}
+
+.medicament.proche-perime {
+  border-left-color: orange;
 }

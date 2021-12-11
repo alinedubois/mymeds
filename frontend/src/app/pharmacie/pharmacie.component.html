@@ -2,7 +2,7 @@
 <!--  {{medicament.nom}}-->
 <!--</div>-->
 <div class="medicament-container">
-  <mat-card class="medicament" *ngFor="let medicament of pharmacie?.boitesDeMedicaments">
+  <mat-card class="medicament" [ngClass]="{valide: true, perime: false, 'proche-perime': false}" *ngFor="let medicament of pharmacie?.boitesDeMedicaments">
     <mat-card-title>{{medicament.nom}}</mat-card-title>
     <mat-card-subtitle>{{medicament.dateDePeremption | delaiDePeremption}}</mat-card-subtitle>
     <mat-card-actions>

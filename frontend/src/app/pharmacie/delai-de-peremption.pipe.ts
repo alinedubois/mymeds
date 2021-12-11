@@ -22,7 +22,7 @@ export class DelaiDePeremptionPipe implements PipeTransform {
 
     if (differenceEnNombreDeJours > 100) {
       return "Périme le " + this.datePipe.transform(dateDePeremption, 'dd/MM/yyyy');
-    } else if (differenceEnNombreDeJours >0 && differenceEnNombreDeJours <= 100) {
+    } else if (differenceEnNombreDeJours > 0 && differenceEnNombreDeJours <= 100) {
       return "Périme dans " + differenceEnNombreDeJours + " jours";
     } else {
       return "Périmé depuis le " + this.datePipe.transform(dateDePeremption, 'dd/MM/yyyy');
