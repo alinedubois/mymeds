@@ -13,16 +13,20 @@
   border-left-style: solid;
 }
 
-.medicament.valide {
+mat-card.medicament.valide {
   border-left-color: green;
 }
 
-.medicament.perime {
+mat-card.medicament.perime {
   border-left-color: red;
 }
 
-.medicament.proche-perime {
+mat-card.medicament.proche-perime {
   border-left-color: orange;
+}
+
+mat-card-subtitle.perime {
+  color: red;
 }
 
 .pharmacie-container {
