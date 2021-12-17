@@ -3,7 +3,8 @@
   flex-direction: row;
   justify-content: center;
   gap: 40px;
-  margin-top: 40px;
+  margin-top: 30px;
+  flex-wrap: wrap;
 }
 
 .medicament {
@@ -22,4 +23,11 @@
 
 .medicament.proche-perime {
   border-left-color: orange;
+}
+
+.pharmacie-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 30px;
 }

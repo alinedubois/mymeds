@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Pharmacie, PharmacieService} from "./pharmacie.service";
+import {BoiteDeMedicament, PharmacieService} from "./pharmacie.service";
 
 @Component({
   selector: 'pharmacie',
@@ -7,7 +7,8 @@ import {Pharmacie, PharmacieService} from "./pharmacie.service";
   styleUrls: ['./pharmacie.component.css']
 })
 export class PharmacieComponent implements OnInit {
-  pharmacie: Pharmacie | undefined;
+  boitesDeMedicaments: BoiteDeMedicament[]=[];
+  recherche = '';
 
   constructor(
     private pharmacieService: PharmacieService
@@ -17,7 +18,7 @@ export class PharmacieComponent implements OnInit {
 
   ngOnInit(): void {
     this.pharmacieService.pharmacie('juillet.aline@gmail.com')
-      .subscribe(pharmacie => this.pharmacie = pharmacie);
+      .subscribe(pharmacie => this.boitesDeMedicaments = pharmacie.boitesDeMedicaments);
   }
 
 }

@@ -6,10 +6,18 @@ export interface Pharmacie {
   boitesDeMedicaments: Array<BoiteDeMedicament>
 }
 
+export interface DateDePeremption {
+  date: string;
+  estAuDelaDeTroisMois: boolean;
+  estDansLesTroisMois: boolean;
+  estDepassee: boolean;
+  nombreDeJoursRestants: number;
+}
+
 export interface BoiteDeMedicament {
   id: string;
   nom: string;
-  dateDePeremption: string;
+  dateDePeremption: DateDePeremption;
 }
 
 

@@ -1,13 +1,28 @@
-<!--<div *ngFor="let medicament of pharmacie?.boitesDeMedicaments">-->
-<!--  {{medicament.nom}}-->
-<!--</div>-->
-<div class="medicament-container">
-  <mat-card class="medicament" [ngClass]="{valide: true, perime: false, 'proche-perime': false}" *ngFor="let medicament of pharmacie?.boitesDeMedicaments">
-    <mat-card-title>{{medicament.nom}}</mat-card-title>
-    <mat-card-subtitle>{{medicament.dateDePeremption | delaiDePeremption}}</mat-card-subtitle>
-    <mat-card-actions>
-      <button mat-button>LIKE</button>
-      <button mat-button>SHARE</button>
-    </mat-card-actions>
-  </mat-card>
+<div class="pharmacie-container">
+  <mat-form-field class="form-field" appearance="outline">
+    <mat-label>Recherche</mat-label>
+    <input matInput
+           type="text"
+           [(ngModel)]="recherche"
+           autocomplete="off">
+    <button *ngIf="recherche" matSuffix mat-icon-button aria-label="Clear" (click)="recherche=''">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+
+  <div class="medicament-container" *ngIf="(boitesDeMedicaments | filter: recherche).length > 0; else pasDeResultat">
+    <mat-card class="medicament"
+              [ngClass]="{valide: medicament.dateDePeremption.estAuDelaDeTroisMois, perime: medicament.dateDePeremption.estDepassee, 'proche-perime': medicament.dateDePeremption.estDansLesTroisMois}"
+              *ngFor="let medicament of boitesDeMedicaments | filter: recherche">
+      <mat-card-title>{{medicament.nom}}</mat-card-title>
+      <mat-card-subtitle>{{medicament.dateDePeremption | delaiDePeremption}}</mat-card-subtitle>
+      <mat-card-actions>
+        <button mat-button>LIKE</button>
+        <button mat-button>SHARE</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  <ng-template #pasDeResultat>
+    <p>Pas de résultat trouvé pour "{{recherche}}".</p>
+  </ng-template>
 </div>

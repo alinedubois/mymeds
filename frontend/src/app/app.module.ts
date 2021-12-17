@@ -17,12 +17,13 @@ import {AppBarComponent} from './app-bar/app-bar.component';
 import {CompteUtilisateurComponent} from './app-bar/compte-utilisateur/compte-utilisateur.component';
 import {AjoutMedicamentComponent} from './app-bar/ajout-medicament/ajout-medicament.component';
 import {MatFormFieldModule} from "@angular/material/form-field";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
 import {PharmacieComponent} from './pharmacie/pharmacie.component';
 import {MatCardModule} from "@angular/material/card";
 import {DelaiDePeremptionPipe} from './pharmacie/delai-de-peremption.pipe';
 import {DatePipe} from "@angular/common";
+import {FilterPipe} from "./filter.pipe";
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import {DatePipe} from "@angular/common";
     AjoutMedicamentComponent,
     PharmacieComponent,
     DelaiDePeremptionPipe,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
@@ -52,7 +54,8 @@ import {DatePipe} from "@angular/common";
     MatAutocompleteModule,
     MatFormFieldModule,
     MatInputModule,
-    MatCardModule
+    MatCardModule,
+    FormsModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]
