@@ -24,6 +24,7 @@ import {MatCardModule} from "@angular/material/card";
 import {DelaiDePeremptionPipe} from './pharmacie/delai-de-peremption.pipe';
 import {DatePipe} from "@angular/common";
 import {FilterPipe} from "./filter.pipe";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import {FilterPipe} from "./filter.pipe";
     MatFormFieldModule,
     MatInputModule,
     MatCardModule,
-    FormsModule
+    FormsModule,
+    MatSnackBarModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

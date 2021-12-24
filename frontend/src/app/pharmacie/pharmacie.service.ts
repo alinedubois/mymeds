@@ -15,7 +15,7 @@ export interface DateDePeremption {
 }
 
 export interface BoiteDeMedicament {
-  id: string;
+  id: number;
   nom: string;
   dateDePeremption: DateDePeremption;
 }
@@ -33,5 +33,9 @@ export class PharmacieService {
 
   pharmacie(identifiantUtilisateur: string): Observable<Pharmacie> {
     return this.httpClient.get<Pharmacie>(BACKEND_URL + '/api/v2/pharmacies/' + identifiantUtilisateur);
+  }
+
+  supprimerUneBoiteDeMedicament(boiteDeMedicamentId: number, identifiantUtilisateur: string): Observable<void> {
+    return this.httpClient.delete<void>(BACKEND_URL + '/api/v2/pharmacies/' + identifiantUtilisateur + '/boites-de-medicaments/' + boiteDeMedicamentId);
   }
 }
