@@ -25,6 +25,8 @@ import {DelaiDePeremptionPipe} from './pharmacie/delai-de-peremption.pipe';
 import {DatePipe} from "@angular/common";
 import {FilterPipe} from "./filter.pipe";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
+import {AjoutBoiteDeMedicamentDialogComponent} from './pharmacie/ajout-boite-de-medicament-dialog/ajout-boite-de-medicament-dialog.component';
+import {MatDialogModule} from "@angular/material/dialog";
 
 @NgModule({
   declarations: [
@@ -35,7 +37,8 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
     AjoutMedicamentComponent,
     PharmacieComponent,
     DelaiDePeremptionPipe,
-    FilterPipe
+    FilterPipe,
+    AjoutBoiteDeMedicamentDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -57,9 +60,11 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
     MatInputModule,
     MatCardModule,
     FormsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatDialogModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
