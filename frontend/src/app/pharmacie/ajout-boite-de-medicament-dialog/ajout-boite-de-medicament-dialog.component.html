@@ -1,6 +1,15 @@
 <h1 mat-dialog-title>Ajout d'une boite de médicament</h1>
 <div mat-dialog-content>
-
+  <mat-form-field appearance="fill">
+    <mat-label>Date de péremption</mat-label>
+    <input matInput [matDatepicker]="datePicker" [formControl]="dateDePeremption">
+    <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
+    <mat-datepicker #datePicker
+                    startView="multi-year"
+                    (yearSelected)="anneeChoisie($event)"
+                    (monthSelected)="moisChoisi($event, datePicker)">
+    </mat-datepicker>
+  </mat-form-field>
 </div>
 <div mat-dialog-actions>
   <button mat-raised-button color="primary" (click)="onAdd()">Ajouter</button>

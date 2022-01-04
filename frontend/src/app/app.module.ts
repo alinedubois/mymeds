@@ -27,6 +27,8 @@ import {FilterPipe} from "./filter.pipe";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {AjoutBoiteDeMedicamentDialogComponent} from './pharmacie/ajout-boite-de-medicament-dialog/ajout-boite-de-medicament-dialog.component';
 import {MatDialogModule} from "@angular/material/dialog";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatMomentDateModule} from "@angular/material-moment-adapter";
 
 @NgModule({
   declarations: [
@@ -61,7 +63,9 @@ import {MatDialogModule} from "@angular/material/dialog";
     MatCardModule,
     FormsModule,
     MatSnackBarModule,
-    MatDialogModule
+    MatDialogModule,
+    MatDatepickerModule,
+    MatMomentDateModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]
