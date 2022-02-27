@@ -29,6 +29,7 @@ import {AjoutBoiteDeMedicamentDialogComponent} from './pharmacie/ajout-boite-de-
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatMomentDateModule} from "@angular/material-moment-adapter";
+import {environment} from "../environments/environment";
 
 @NgModule({
   declarations: [
@@ -46,7 +47,7 @@ import {MatMomentDateModule} from "@angular/material-moment-adapter";
     BrowserModule,
     AuthModule.forRoot({
       domain: 'mymeds.eu.auth0.com',
-      clientId: 'ABQP9e89Grt7BXzWkaYCYqvb4oRfsec2'
+      clientId: environment.auth0Client
     }),
     AppRoutingModule,
     HttpClientModule,
