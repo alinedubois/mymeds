@@ -20,9 +20,6 @@ export interface BoiteDeMedicament {
   dateDePeremption: DateDePeremption;
 }
 
-
-const BACKEND_URL = 'http://localhost:8080';
-
 @Injectable({
   providedIn: 'root'
 })
@@ -32,10 +29,10 @@ export class PharmacieService {
   }
 
   pharmacie(identifiantUtilisateur: string): Observable<Pharmacie> {
-    return this.httpClient.get<Pharmacie>(BACKEND_URL + '/api/v2/pharmacies/' + identifiantUtilisateur);
+    return this.httpClient.get<Pharmacie>('/api/v2/pharmacies/' + identifiantUtilisateur);
   }
 
   supprimerUneBoiteDeMedicament(boiteDeMedicamentId: number, identifiantUtilisateur: string): Observable<void> {
-    return this.httpClient.delete<void>(BACKEND_URL + '/api/v2/pharmacies/' + identifiantUtilisateur + '/boites-de-medicaments/' + boiteDeMedicamentId);
+    return this.httpClient.delete<void>('/api/v2/pharmacies/' + identifiantUtilisateur + '/boites-de-medicaments/' + boiteDeMedicamentId);
   }
 }

@@ -4,10 +4,10 @@ import {BrowserModule} from '@angular/platform-browser';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {FicheMedicamentComponent} from './fiche-medicament/fiche-medicament.component';
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatToolbarModule} from "@angular/material/toolbar";
-import {AuthModule} from "@auth0/auth0-angular";
+import {AuthHttpInterceptor, AuthModule} from "@auth0/auth0-angular";
 import {MatIconModule} from "@angular/material/icon";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {MatMenuModule} from "@angular/material/menu";
@@ -47,7 +47,14 @@ import {environment} from "../environments/environment";
     BrowserModule,
     AuthModule.forRoot({
       domain: 'mymeds.eu.auth0.com',
-      clientId: environment.auth0Client
+      clientId: environment.auth0Client,
+      redirectUri: window.location.origin,
+      httpInterceptor: {
+        allowedList: [
+          '/api/*',
+          'http://mymeds-backend.herokuapp.com/api/*',
+        ],
+      },
     }),
     AppRoutingModule,
     HttpClientModule,
@@ -68,7 +75,10 @@ import {environment} from "../environments/environment";
     MatDatepickerModule,
     MatMomentDateModule
   ],
-  providers: [DatePipe],
+  providers: [
+    DatePipe,
+    {provide: HTTP_INTERCEPTORS, useClass: AuthHttpInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
