@@ -7,7 +7,6 @@ import {FicheMedicamentComponent} from './fiche-medicament/fiche-medicament.comp
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatToolbarModule} from "@angular/material/toolbar";
-import {AuthHttpInterceptor, AuthModule} from "@auth0/auth0-angular";
 import {MatIconModule} from "@angular/material/icon";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {MatMenuModule} from "@angular/material/menu";
@@ -30,6 +29,8 @@ import {MatDialogModule} from "@angular/material/dialog";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatMomentDateModule} from "@angular/material-moment-adapter";
 import {environment} from "../environments/environment";
+import {AuthModule} from "@auth0/auth0-angular";
+import {AuthHttpInterceptor} from "./auth-http-interceptor";
 
 @NgModule({
   declarations: [
