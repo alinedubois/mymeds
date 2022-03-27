@@ -1,6 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 export interface Medicament {
+  id: string;
   nom: string;
   administration: string;
   surveillanceRenforcee: boolean;

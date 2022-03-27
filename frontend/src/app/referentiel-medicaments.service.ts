@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Medicament} from "./fiche-medicament/fiche-medicament.component";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
@@ -10,7 +10,7 @@ export class ReferentielMedicamentsService {
 
   constructor(private httpClient:HttpClient) { }
 
-  medicaments(): Observable<Array<Medicament>> {
-    return this.httpClient.get<Array<Medicament>>('http://mymeds-backend.herokuapp.com/api/referentiel/medicaments?nom=dol');
+  medicaments(nom: string): Observable<Array<Medicament>> {
+    return this.httpClient.get<Array<Medicament>>(`/api/referentiel/medicaments?nom=${nom}`);
   }
 }

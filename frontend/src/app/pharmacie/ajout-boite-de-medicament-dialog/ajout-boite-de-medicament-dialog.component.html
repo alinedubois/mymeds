@@ -1,8 +1,23 @@
 <h1 mat-dialog-title *ngIf="data?.identifiantDuMedicament; else titre">Ajout d'une boite de {{ data?.nomDuMedicament }}</h1>
 <ng-template #titre><h1 mat-dialog-title>Ajout d'une boite de médicament</h1></ng-template>
-<div mat-dialog-content>
-  <mat-form-field appearance="fill">
+<div mat-dialog-content class="d-flex flex-column">
+  <mat-form-field *ngIf="!data?.identifiantDuMedicament">
+    <input matInput placeholder="Médicament" [matAutocomplete]="auto"
+           [formControl]="medicament">
+    <button *ngIf="medicamentSelectionne" matSuffix mat-icon-button aria-label="Clear" (click)="clearSelection()">
+      <mat-icon>close</mat-icon>
+    </button>
+    <mat-autocomplete [panelWidth]="400" #auto="matAutocomplete" (optionSelected)="onSelected($event)">
+      <mat-option *ngIf="enCoursDeRechercheDeMedicament" class="is-loading">Recherche...</mat-option>
+      <ng-container *ngIf="!enCoursDeRechercheDeMedicament">
+        <mat-option *ngFor="let medicamentRecherche of medicamentsRecherche" [value]="medicamentRecherche.id">
+          <span><b>{{medicamentRecherche.nom}}</b></span>
+        </mat-option>
+      </ng-container>
+    </mat-autocomplete>
+  </mat-form-field>
 
+  <mat-form-field appearance="fill">
     <mat-label>Date de péremption</mat-label>
     <input matInput [matDatepicker]="datePicker" [formControl]="dateDePeremption">
     <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>

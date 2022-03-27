@@ -6,6 +6,9 @@ import {Moment} from 'moment';
 import {MatDatepicker} from "@angular/material/datepicker";
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from "@angular/material/core";
 import {MAT_MOMENT_DATE_ADAPTER_OPTIONS, MomentDateAdapter} from "@angular/material-moment-adapter";
+import {debounceTime, distinctUntilChanged, filter, finalize, switchMap, tap} from "rxjs/operators";
+import {ReferentielMedicamentsService} from "../../referentiel-medicaments.service";
+import {Medicament} from "../../fiche-medicament/fiche-medicament.component";
 
 export const MY_FORMATS = {
   parse: {
@@ -34,14 +37,35 @@ export const MY_FORMATS = {
   ],
 })
 export class AjoutBoiteDeMedicamentDialogComponent implements OnInit {
+  medicament = new FormControl('');
+  medicamentSelectionne: string | undefined;
+  enCoursDeRechercheDeMedicament = false;
   dateDePeremption = new FormControl(moment());
+  medicamentsRecherche: Array<Medicament> = [];
 
   constructor(
     public dialogRef: MatDialogRef<AjoutBoiteDeMedicamentDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: {identifiantDuMedicament: string, nomDuMedicament: string}
+    @Inject(MAT_DIALOG_DATA) public data: {identifiantDuMedicament: string, nomDuMedicament: string},
+    private referentielMedicaments: ReferentielMedicamentsService
   ) { }
 
   ngOnInit(): void {
+    this.medicament.valueChanges
+      .pipe(
+        filter(valeurDuChamp => valeurDuChamp && valeurDuChamp.length >= 3),
+        distinctUntilChanged(),
+        debounceTime(400),
+        tap(() => {
+          this.medicamentsRecherche = [];
+          this.enCoursDeRechercheDeMedicament = true;
+        }),
+        switchMap(value => this.referentielMedicaments.medicaments(value)
+          .pipe(
+            finalize(() => this.enCoursDeRechercheDeMedicament = false),
+          )
+        )
+      )
+      .subscribe((data: any) => this.medicamentsRecherche = data);
   }
 
   onClose() {
@@ -50,7 +74,7 @@ export class AjoutBoiteDeMedicamentDialogComponent implements OnInit {
 
   onAdd() {
     this.dialogRef.close({
-      identifiantDuMedicament: this.data.identifiantDuMedicament,
+      identifiantDuMedicament: this.medicamentSelectionne ? this.medicamentSelectionne : this.data.identifiantDuMedicament,
       dateDePeremption : this.dateDePeremption.value
     });
   }
@@ -66,5 +90,15 @@ export class AjoutBoiteDeMedicamentDialogComponent implements OnInit {
     ctrlValue.month(mois.month());
     this.dateDePeremption.setValue(ctrlValue);
     datePicker.close();
+  }
+
+  clearSelection() {
+    this.medicamentSelectionne = '';
+    this.medicament.setValue('');
+  }
+
+  onSelected(event: any) {
+    this.medicament.setValue(event.option.viewValue);
+    this.medicamentSelectionne = event.option.value;
   }
 }

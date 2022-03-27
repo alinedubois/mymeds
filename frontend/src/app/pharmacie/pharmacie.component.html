@@ -1,15 +1,18 @@
 <div class="pharmacie-container">
-  <mat-form-field class="form-field" appearance="outline">
-    <mat-label>Recherche</mat-label>
-    <input matInput
-           type="text"
-           [(ngModel)]="recherche"
-           autocomplete="off">
-    <button *ngIf="recherche" matSuffix mat-icon-button aria-label="Clear" (click)="recherche=''">
-      <mat-icon>close</mat-icon>
-    </button>
-  </mat-form-field>
+  <div class="actions">
+    <mat-form-field class="form-field" appearance="outline">
+      <mat-label>Recherche</mat-label>
+      <input matInput
+             type="text"
+             [(ngModel)]="recherche"
+             autocomplete="off">
+      <button *ngIf="recherche" matSuffix mat-icon-button aria-label="Clear" (click)="recherche=''">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
 
+    <button class="ajoutDeMedicament" mat-raised-button color="primary" (click)="ajouterUneBoiteDeMedicament()">Ajouter un médicament</button>
+  </div>
   <div class="medicament-container" *ngIf="(boitesDeMedicaments | filter: recherche).length > 0; else pasDeResultat">
     <mat-card class="medicament"
               [ngClass]="{valide: medicament.dateDePeremption.estAuDelaDeTroisMois, perime: medicament.dateDePeremption.estDepassee, 'proche-perime': medicament.dateDePeremption.estDansLesTroisMois}"

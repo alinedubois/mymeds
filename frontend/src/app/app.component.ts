@@ -11,7 +11,7 @@ export class AppComponent {
   medicaments: Array<Medicament> = [];
 
   constructor(private referentiel: ReferentielMedicamentsService) {
-    this.referentiel.medicaments().subscribe(medicamentsResponse=>this.medicaments=medicamentsResponse);
+    this.referentiel.medicaments("dol").subscribe(medicamentsResponse=>this.medicaments=medicamentsResponse);
   }
 
 }

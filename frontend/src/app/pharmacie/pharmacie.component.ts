@@ -48,12 +48,12 @@ export class PharmacieComponent implements OnInit {
     });
   }
 
-  ajouterUneBoiteDeMedicament(medicament: BoiteDeMedicament) {
+  ajouterUneBoiteDeMedicament(medicament?: BoiteDeMedicament) {
     let dialogRef = this.dialog.open(AjoutBoiteDeMedicamentDialogComponent, {
-      data: {
+      data: medicament ? {
         identifiantDuMedicament: medicament.medicamentId,
         nomDuMedicament: medicament.nom
-      }
+      } : {}
     });
     dialogRef.afterClosed().subscribe(result => {
       this.pharmacieService.ajouterUneBoiteDeMedicament(result.identifiantDuMedicament, result.dateDePeremption, this.user?.email!!).pipe(
