@@ -1,6 +1,8 @@
-<h1 mat-dialog-title>Ajout d'une boite de médicament</h1>
+<h1 mat-dialog-title *ngIf="data?.identifiantDuMedicament; else titre">Ajout d'une boite de {{ data?.nomDuMedicament }}</h1>
+<ng-template #titre><h1 mat-dialog-title>Ajout d'une boite de médicament</h1></ng-template>
 <div mat-dialog-content>
   <mat-form-field appearance="fill">
+
     <mat-label>Date de péremption</mat-label>
     <input matInput [matDatepicker]="datePicker" [formControl]="dateDePeremption">
     <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>

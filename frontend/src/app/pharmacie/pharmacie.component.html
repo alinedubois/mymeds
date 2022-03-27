@@ -19,7 +19,7 @@
         [ngClass]="{valide: medicament.dateDePeremption.estAuDelaDeTroisMois, perime: medicament.dateDePeremption.estDepassee, 'proche-perime': medicament.dateDePeremption.estDansLesTroisMois}"
       >{{medicament.dateDePeremption | delaiDePeremption}}</mat-card-subtitle>
       <mat-card-actions>
-        <button mat-icon-button (click)="ajouterUneBoiteDeMedicament()">
+        <button mat-icon-button (click)="ajouterUneBoiteDeMedicament(medicament)">
           <mat-icon>add_circle_outline</mat-icon>
         </button>
         <button mat-icon-button (click)="supprimerUneBoiteDeMedicament(medicament.id)">

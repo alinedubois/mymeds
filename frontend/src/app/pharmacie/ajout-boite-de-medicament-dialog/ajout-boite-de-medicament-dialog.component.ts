@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {MatDialogRef} from "@angular/material/dialog";
+import {Component, Inject, OnInit} from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {FormControl} from "@angular/forms";
 import * as moment from 'moment';
 import {Moment} from 'moment';
@@ -37,18 +37,22 @@ export class AjoutBoiteDeMedicamentDialogComponent implements OnInit {
   dateDePeremption = new FormControl(moment());
 
   constructor(
-    public dialogRef: MatDialogRef<AjoutBoiteDeMedicamentDialogComponent>
+    public dialogRef: MatDialogRef<AjoutBoiteDeMedicamentDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: {identifiantDuMedicament: string, nomDuMedicament: string}
   ) { }
 
   ngOnInit(): void {
   }
 
   onClose() {
-    this.dialogRef.close(false);
+    this.dialogRef.close(undefined);
   }
 
   onAdd() {
-    this.dialogRef.close(true);
+    this.dialogRef.close({
+      identifiantDuMedicament: this.data.identifiantDuMedicament,
+      dateDePeremption : this.dateDePeremption.value
+    });
   }
 
   anneeChoisie(annee: Moment) {

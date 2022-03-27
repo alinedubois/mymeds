@@ -3,7 +3,7 @@ import {BoiteDeMedicament, PharmacieService} from "./pharmacie.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {MatDialog} from "@angular/material/dialog";
 import {AjoutBoiteDeMedicamentDialogComponent} from "./ajout-boite-de-medicament-dialog/ajout-boite-de-medicament-dialog.component";
-import {AuthService} from "@auth0/auth0-angular";
+import {AuthService, User} from "@auth0/auth0-angular";
 import {switchMap} from "rxjs/operators";
 
 @Component({
@@ -14,6 +14,7 @@ import {switchMap} from "rxjs/operators";
 export class PharmacieComponent implements OnInit {
   boitesDeMedicaments: BoiteDeMedicament[] = [];
   recherche = '';
+  user: User | null | undefined;
 
   constructor(
     private pharmacieService: PharmacieService,
@@ -26,9 +27,10 @@ export class PharmacieComponent implements OnInit {
 
   ngOnInit(): void {
     this.auth.user$.pipe(
-      switchMap(user =>
-        this.pharmacieService.pharmacie(user?.email!!))
-    ).subscribe(pharmacie => this.boitesDeMedicaments = pharmacie.boitesDeMedicaments);
+      switchMap(user => {
+          this.user = user;
+          return this.pharmacieService.pharmacie(user?.email!!);
+      })).subscribe(pharmacie => this.boitesDeMedicaments = pharmacie.boitesDeMedicaments);
   }
 
   supprimerUneBoiteDeMedicament(boiteDeMedicamentId: number) {
@@ -46,10 +48,25 @@ export class PharmacieComponent implements OnInit {
     });
   }
 
-  ajouterUneBoiteDeMedicament() {
-    let dialogRef = this.dialog.open(AjoutBoiteDeMedicamentDialogComponent, {});
+  ajouterUneBoiteDeMedicament(medicament: BoiteDeMedicament) {
+    let dialogRef = this.dialog.open(AjoutBoiteDeMedicamentDialogComponent, {
+      data: {
+        identifiantDuMedicament: medicament.medicamentId,
+        nomDuMedicament: medicament.nom
+      }
+    });
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+      this.pharmacieService.ajouterUneBoiteDeMedicament(result.identifiantDuMedicament, result.dateDePeremption, this.user?.email!!).pipe(
+        switchMap(user => this.pharmacieService.pharmacie(this.user?.email!!)))
+        .subscribe(pharmacie => {
+          this._snackBar.open('Ajout effectué avec succès !', undefined, {
+            duration: 5000,
+            verticalPosition: "bottom",
+            horizontalPosition: "end",
+            panelClass: ['snack-bar-success']
+          });
+          this.boitesDeMedicaments = pharmacie.boitesDeMedicaments;
+        });
     });
   }
 }
