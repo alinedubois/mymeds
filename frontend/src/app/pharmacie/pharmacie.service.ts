@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Moment} from "moment";
+import {environment} from "../../environments/environment";
 
 export interface Pharmacie {
   boitesDeMedicaments: Array<BoiteDeMedicament>
@@ -31,15 +32,15 @@ export class PharmacieService {
   }
 
   pharmacie(identifiantUtilisateur: string): Observable<Pharmacie> {
-    return this.httpClient.get<Pharmacie>('/api/v2/pharmacies/' + identifiantUtilisateur);
+    return this.httpClient.get<Pharmacie>(`${environment.apiPath}/api/v2/pharmacies/${identifiantUtilisateur}`);
   }
 
   supprimerUneBoiteDeMedicament(boiteDeMedicamentId: number, identifiantUtilisateur: string): Observable<void> {
-    return this.httpClient.delete<void>('/api/v2/pharmacies/' + identifiantUtilisateur + '/boites-de-medicaments/' + boiteDeMedicamentId);
+    return this.httpClient.delete<void>(`${environment.apiPath}/api/v2/pharmacies/${identifiantUtilisateur}/boites-de-medicaments/${boiteDeMedicamentId}`);
   }
 
   ajouterUneBoiteDeMedicament(medicamentId: number, dateDePeremption: Moment, identifiantUtilisateur: string): Observable<void> {
-    return this.httpClient.post<void>('/api/v2/pharmacies/' + identifiantUtilisateur + '/boites-de-medicaments', {
+    return this.httpClient.post<void>(`${environment.apiPath}/api/v2/pharmacies/${identifiantUtilisateur}/boites-de-medicaments`, {
       idMedicament : medicamentId,
       dateDePeremption :dateDePeremption
     });

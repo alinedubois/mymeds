@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  auth0Client: 'ABQP9e89Grt7BXzWkaYCYqvb4oRfsec2'
+  auth0Client: 'ABQP9e89Grt7BXzWkaYCYqvb4oRfsec2',
+  apiPath: ''
 };
 
 /*
