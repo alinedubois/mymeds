@@ -53,7 +53,7 @@ import {AuthHttpInterceptor} from "./auth-http-interceptor";
       httpInterceptor: {
         allowedList: [
           '/api/*',
-          'http://mymeds-backend.herokuapp.com/api/*',
+          'https://mymeds-backend.herokuapp.com/api/*',
         ],
       },
     }),
