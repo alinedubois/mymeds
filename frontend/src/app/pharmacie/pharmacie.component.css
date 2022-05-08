@@ -42,6 +42,13 @@ mat-card-subtitle.perime {
   align-items: center;
 }
 
+@media screen and (max-width: 420px) {
+  .actions {
+    flex-direction: column;
+    gap: 0;
+  }
+}
+
 .ajoutDeMedicament {
   height: 50px;
   margin-bottom: 18px;
