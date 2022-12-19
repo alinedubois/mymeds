@@ -10,7 +10,9 @@ export class FilterPipe implements PipeTransform {
 
     return items.filter(item => {
       return Object.keys(item).some(key => {
-        return String(item[key]).toLowerCase().includes(searchText.toLowerCase());
+        return String(item[key])
+          .toLowerCase()
+          .includes(searchText.toLowerCase());
       });
     });
   }

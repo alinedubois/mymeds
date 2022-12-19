@@ -7,9 +7,7 @@ import {DateDePeremption} from "./pharmacie.service";
 export class DelaiDePeremptionPipe implements PipeTransform {
 
   transform(dateDePeremption: DateDePeremption): string | null {
-    // medicament périmé depuis le
-    // médicament qui périme dans 100 jours
-    // médicament qui périme le (supérieur à 100 jours)
+
     if (dateDePeremption.estAuDelaDeTroisMois) {
       return "Périme le " + dateDePeremption.date;
     } else if (dateDePeremption.estDansLesTroisMois) {

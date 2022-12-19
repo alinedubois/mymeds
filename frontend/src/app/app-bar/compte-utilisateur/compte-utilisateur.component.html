@@ -6,6 +6,7 @@
     </div>
   </div>
   <mat-menu #menu="matMenu">
+    <button mat-menu-item>Préférences</button>
     <button mat-menu-item (click)="auth.logout({ returnTo: document.location.origin })">Se déconnecter</button>
   </mat-menu>
 </ng-container>

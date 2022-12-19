@@ -11,15 +11,21 @@
       </button>
     </mat-form-field>
 
-    <button class="ajoutDeMedicament" mat-raised-button color="primary" (click)="ajouterUneBoiteDeMedicament()">Ajouter un médicament</button>
+    <button class="ajoutDeMedicament" mat-raised-button color="primary"
+            (click)="ajouterUneBoiteDeMedicament()">Ajouter un médicament</button>
   </div>
-  <div class="medicament-container" *ngIf="(boitesDeMedicaments | filter: recherche).length > 0; else pasDeResultat">
+  <div class="medicament-container"
+       *ngIf="(boitesDeMedicaments | filter: recherche).length > 0; else pasDeResultat">
     <mat-card class="medicament"
-              [ngClass]="{valide: medicament.dateDePeremption.estAuDelaDeTroisMois, perime: medicament.dateDePeremption.estDepassee, 'proche-perime': medicament.dateDePeremption.estDansLesTroisMois}"
+              [ngClass]="{valide: medicament.dateDePeremption.estAuDelaDeTroisMois,
+              perime: medicament.dateDePeremption.estDepassee,
+              'proche-perime': medicament.dateDePeremption.estDansLesTroisMois}"
               *ngFor="let medicament of boitesDeMedicaments | filter: recherche">
       <mat-card-title>{{medicament.nom}}</mat-card-title>
       <mat-card-subtitle
-        [ngClass]="{valide: medicament.dateDePeremption.estAuDelaDeTroisMois, perime: medicament.dateDePeremption.estDepassee, 'proche-perime': medicament.dateDePeremption.estDansLesTroisMois}"
+        [ngClass]="{valide: medicament.dateDePeremption.estAuDelaDeTroisMois,
+        perime: medicament.dateDePeremption.estDepassee,
+        'proche-perime': medicament.dateDePeremption.estDansLesTroisMois}"
       >{{medicament.dateDePeremption | delaiDePeremption}}</mat-card-subtitle>
       <mat-card-actions>
         <button mat-icon-button (click)="ajouterUneBoiteDeMedicament(medicament)">
