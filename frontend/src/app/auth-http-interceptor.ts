@@ -3,7 +3,7 @@ import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest,} from '@angular/co
 import {from, iif, Observable, of, throwError} from 'rxjs';
 import {Inject, Injectable} from '@angular/core';
 
-import {catchError, concatMap, first, pluck, switchMap, tap,} from 'rxjs/operators';
+import {catchError, concatMap, first, map, pluck, switchMap, tap,} from 'rxjs/operators';
 import {Auth0Client, GetTokenSilentlyOptions} from '@auth0/auth0-spa-js';
 import {
   ApiRouteDefinition,
@@ -39,7 +39,7 @@ export class AuthHttpInterceptor implements HttpInterceptor {
           // If we have a matching route, call getTokenSilently and attach the token to the
           // outgoing request
           of(route).pipe(
-            pluck('tokenOptions'),
+            map((x: any) => x?.tokenOptions),
             concatMap<GetTokenSilentlyOptions, Observable<string>>(
               (options) => {
                 return this.getAccessTokenSilently(options).pipe(

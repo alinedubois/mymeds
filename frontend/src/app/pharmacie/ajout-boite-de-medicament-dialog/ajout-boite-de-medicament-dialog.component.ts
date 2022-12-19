@@ -52,7 +52,7 @@ export class AjoutBoiteDeMedicamentDialogComponent implements OnInit {
   ngOnInit(): void {
     this.medicament.valueChanges
       .pipe(
-        filter(valeurDuChamp => valeurDuChamp && valeurDuChamp.length >= 3),
+        filter((valeurDuChamp: any) => valeurDuChamp && valeurDuChamp.length >= 3),
         distinctUntilChanged(),
         debounceTime(400),
         tap(() => {
@@ -81,13 +81,13 @@ export class AjoutBoiteDeMedicamentDialogComponent implements OnInit {
 
   anneeChoisie(annee: Moment) {
     const ctrlValue = this.dateDePeremption.value;
-    ctrlValue.year(annee.year());
+    ctrlValue?.year(annee.year());
     this.dateDePeremption.setValue(ctrlValue);
   }
 
   moisChoisi(mois: Moment, datePicker: MatDatepicker<Moment>) {
     const ctrlValue = this.dateDePeremption.value;
-    ctrlValue.month(mois.month());
+    ctrlValue?.month(mois.month());
     this.dateDePeremption.setValue(ctrlValue);
     datePicker.close();
   }
