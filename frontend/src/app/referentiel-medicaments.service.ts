@@ -12,6 +12,6 @@ export class ReferentielMedicamentsService {
   constructor(private httpClient:HttpClient) { }
 
   medicaments(nom: string): Observable<Array<Medicament>> {
-    return this.httpClient.get<Array<Medicament>>(`/api/referentiel/medicaments?nom=${nom}`);
+    return this.httpClient.get<Array<Medicament>>(`${environment.apiPath}/api/referentiel/medicaments?nom=${nom}`);
   }
 }
