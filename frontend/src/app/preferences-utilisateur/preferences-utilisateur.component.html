@@ -1,0 +1,63 @@
+<div class="example-container">
+
+  <div class="titre-page-preferences">Vos préférences</div>
+
+  <mat-accordion>
+    <mat-expansion-panel hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Gestion des notifications
+        </mat-panel-title>
+        <mat-panel-description>
+          Gérez le choix des notifications par mail et l'heure de leur réception.
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <div class="notification-mail" *ngIf="preferences">
+        <mat-slide-toggle [(ngModel)]="preferences.notificationMail">Notifier par mail</mat-slide-toggle>
+      </div>
+      <div class="heure-notification">Heure de notification</div>
+      <div class="choix-heure-notification" *ngIf="preferences">
+        <input
+          matInput
+          [ngxTimepicker]="toggleTimepicker"
+          [format]="24"
+          [disableClick]="true"
+          [disabled]="!preferences.notificationMail"
+          [value]="'' + preferences.notificationHeure + ':00'"
+          readonly>
+        <ngx-material-timepicker-toggle [for]="toggleTimepicker" [disabled]="!preferences.notificationMail"></ngx-material-timepicker-toggle>
+        <ngx-material-timepicker #toggleTimepicker></ngx-material-timepicker>
+    </div>
+    </mat-expansion-panel>
+    <mat-expansion-panel (opened)="panelOpenState = true"
+                         (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Gestion de l'affichage de votre pharmacie
+        </mat-panel-title>
+        <mat-panel-description>
+          Choisissez votre préférence d'affichage de votre pharmacie
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <div class="ordre-affichage">
+        <mat-form-field appearance="fill">
+          <mat-label>Ordre d'affichage</mat-label>
+          <mat-select [(value)]="selectedOption">
+            <mat-option value="option">Ordre alphabétique</mat-option>
+            <mat-option value="option1">Date de péremption</mat-option>
+            <mat-option value="option2">Date de saisie</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <section>
+    <div class="bouton-enregistrer">
+      <button mat-raised-button color="primary">Enregistrer</button>
+    </div>
+  </section>
+
+  <div>{{preferences | json}}</div>
+</div>
