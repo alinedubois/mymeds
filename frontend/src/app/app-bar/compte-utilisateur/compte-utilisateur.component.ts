@@ -1,7 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {DOCUMENT} from "@angular/common";
 import {AuthService} from "@auth0/auth0-angular";
-import {ReferentielMedicamentsService} from "../../referentiel-medicaments.service";
+import {ReferentielMedicamentsService} from "../../services/referentiel-medicaments.service";
 
 @Component({
   selector: 'compte-utilisateur',

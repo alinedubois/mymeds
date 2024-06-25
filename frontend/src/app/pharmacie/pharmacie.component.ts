@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {BoiteDeMedicament, PharmacieService} from "./pharmacie.service";
+import {BoiteDeMedicament, PharmacieService} from "../services/pharmacie.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {MatDialog} from "@angular/material/dialog";
 import {AjoutBoiteDeMedicamentDialogComponent} from "./ajout-boite-de-medicament-dialog/ajout-boite-de-medicament-dialog.component";

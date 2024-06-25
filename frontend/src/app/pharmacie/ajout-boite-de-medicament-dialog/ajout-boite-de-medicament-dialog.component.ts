@@ -7,7 +7,7 @@ import {MatDatepicker} from "@angular/material/datepicker";
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from "@angular/material/core";
 import {MAT_MOMENT_DATE_ADAPTER_OPTIONS, MomentDateAdapter} from "@angular/material-moment-adapter";
 import {debounceTime, distinctUntilChanged, filter, finalize, switchMap, tap} from "rxjs/operators";
-import {ReferentielMedicamentsService} from "../../referentiel-medicaments.service";
+import {ReferentielMedicamentsService} from "../../services/referentiel-medicaments.service";
 import {Medicament} from "../../fiche-medicament/fiche-medicament.component";
 
 export const MY_FORMATS = {

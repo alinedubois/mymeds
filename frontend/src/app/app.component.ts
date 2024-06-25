@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {Medicament} from "./fiche-medicament/fiche-medicament.component";
-import {ReferentielMedicamentsService} from "./referentiel-medicaments.service";
+import {ReferentielMedicamentsService} from "./services/referentiel-medicaments.service";
 
 @Component({
   selector: 'app-root',

@@ -31,6 +31,17 @@ import {MatMomentDateModule} from "@angular/material-moment-adapter";
 import {environment} from "../environments/environment";
 import {AuthModule} from "@auth0/auth0-angular";
 import {AuthHttpInterceptor} from "./auth-http-interceptor";
+import { PreferencesUtilisateurComponent } from './preferences-utilisateur/preferences-utilisateur.component';
+import {MatSelectModule} from "@angular/material/select";
+import {MatListModule} from "@angular/material/list";
+import {MatSlideToggleModule} from "@angular/material/slide-toggle";
+import {NgxMaterialTimepickerModule} from "ngx-material-timepicker";
+import {
+  NgxMatDatetimePickerModule,
+  NgxMatNativeDateModule,
+  NgxMatTimepickerModule
+} from "@angular-material-components/datetime-picker";
+import {MatExpansionModule} from "@angular/material/expansion";
 
 @NgModule({
   declarations: [
@@ -42,7 +53,8 @@ import {AuthHttpInterceptor} from "./auth-http-interceptor";
     PharmacieComponent,
     DelaiDePeremptionPipe,
     FilterPipe,
-    AjoutBoiteDeMedicamentDialogComponent
+    AjoutBoiteDeMedicamentDialogComponent,
+    PreferencesUtilisateurComponent
   ],
   imports: [
     BrowserModule,
@@ -74,7 +86,15 @@ import {AuthHttpInterceptor} from "./auth-http-interceptor";
     MatSnackBarModule,
     MatDialogModule,
     MatDatepickerModule,
-    MatMomentDateModule
+    MatMomentDateModule,
+    MatSelectModule,
+    MatListModule,
+    MatSlideToggleModule,
+    NgxMaterialTimepickerModule.setOpts('fr-FR', 'arab'),
+    NgxMatDatetimePickerModule,
+    NgxMatTimepickerModule,
+    NgxMatNativeDateModule,
+    MatExpansionModule
   ],
   providers: [
     DatePipe,

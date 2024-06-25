@@ -1,5 +1,5 @@
 import {Pipe, PipeTransform} from '@angular/core';
-import {DateDePeremption} from "./pharmacie.service";
+import {DateDePeremption} from "../services/pharmacie.service";
 
 @Pipe({
   name: 'delaiDePeremption'
