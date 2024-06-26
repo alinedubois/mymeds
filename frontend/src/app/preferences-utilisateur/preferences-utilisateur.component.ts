@@ -25,4 +25,3 @@ export class PreferencesUtilisateurComponent implements OnInit{
       })).subscribe(preferences => this.preferences = preferences)
   }
 }
-

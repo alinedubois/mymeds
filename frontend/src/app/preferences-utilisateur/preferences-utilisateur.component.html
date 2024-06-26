@@ -23,7 +23,7 @@
           [format]="24"
           [disableClick]="true"
           [disabled]="!preferences.notificationMail"
-          [value]="'' + preferences.notificationHeure + ':00'"
+          [(ngModel)]="preferences.notificationHeure"
           readonly>
         <ngx-material-timepicker-toggle [for]="toggleTimepicker" [disabled]="!preferences.notificationMail"></ngx-material-timepicker-toggle>
         <ngx-material-timepicker #toggleTimepicker></ngx-material-timepicker>
@@ -39,13 +39,13 @@
           Choisissez votre préférence d'affichage de votre pharmacie
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <div class="ordre-affichage">
+      <div class="ordre-affichage"  *ngIf="preferences">
+        <!-- TODO ngModel [(ngModel)]="preferences?.typeAffichageMedicaments"-->
         <mat-form-field appearance="fill">
           <mat-label>Ordre d'affichage</mat-label>
-          <mat-select [(value)]="selectedOption">
-            <mat-option value="option">Ordre alphabétique</mat-option>
-            <mat-option value="option1">Date de péremption</mat-option>
-            <mat-option value="option2">Date de saisie</mat-option>
+          <mat-select [(value)]="preferences.typeAffichageMedicaments">
+            <mat-option value="PAR_ORDRE_ALPHABETIQUE">Ordre alphabétique</mat-option>
+            <mat-option value="PAR_DATE_DE_PEREMPTION">Date de péremption</mat-option>
           </mat-select>
         </mat-form-field>
       </div>
