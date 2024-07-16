@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-bar',
@@ -6,5 +7,10 @@ import {Component} from '@angular/core';
   styleUrls: ['./app-bar.component.css']
 })
 export class AppBarComponent {
+  constructor(private router: Router) {}
+
+  navigateToPharmacie() {
+    this.router.navigate(['/']);
+  }
 
 }

@@ -28,8 +28,7 @@
             ],
             "styles": [
               "src/custom-theme.scss",
-              "src/styles.css",
-              "node_npm install @angular-material-components/datetime-picker\nmodules/@angular/material/prebuilt-themes/indigo-pink.css"
+              "src/styles.css"
             ],
             "scripts": []
           },

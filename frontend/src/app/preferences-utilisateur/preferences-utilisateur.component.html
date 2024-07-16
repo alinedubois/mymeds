@@ -40,7 +40,6 @@
         </mat-panel-description>
       </mat-expansion-panel-header>
       <div class="ordre-affichage"  *ngIf="preferences">
-        <!-- TODO ngModel [(ngModel)]="preferences?.typeAffichageMedicaments"-->
         <mat-form-field appearance="fill">
           <mat-label>Ordre d'affichage</mat-label>
           <mat-select [(value)]="preferences.typeAffichageMedicaments">
@@ -55,9 +54,8 @@
 
   <section>
     <div class="bouton-enregistrer">
-      <button mat-raised-button color="primary">Enregistrer</button>
+      <button mat-raised-button color="primary" (click)="enregistrer()">Enregistrer</button>
     </div>
   </section>
 
-  <div>{{preferences | json}}</div>
 </div>

@@ -9,6 +9,7 @@ export interface Preferences {
   typeAffichageMedicaments: string;
 }
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -20,5 +21,11 @@ export class PreferencesService {
     return this.httpClient.get<Preferences>(`${environment.apiPath}/api/${identifiantUtilisateur}/preferences`);
   }
 
+  preferencesModifiees(identifiantUtilisateur: string, preferenceDTO: Preferences): Observable<void> {
+    return this.httpClient.put<void>(
+      `${environment.apiPath}/api/${identifiantUtilisateur}/preferences`,
+      preferenceDTO
+    );
+  }
 }
 

@@ -24,4 +24,12 @@ export class PreferencesUtilisateurComponent implements OnInit{
         return this.preferencesService.preferences(user?.email!!);
       })).subscribe(preferences => this.preferences = preferences)
   }
+
+  enregistrer(): void {
+    this.auth.user$.pipe(
+      switchMap(user => {
+        this.user = user;
+        return this.preferencesService.preferencesModifiees(user?.email!!, this.preferences!);
+      })).subscribe(() => {})
+  }
 }
